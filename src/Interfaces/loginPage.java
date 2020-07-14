@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+
 /**
  *
  * @author Block
@@ -33,8 +34,8 @@ public class loginPage extends javax.swing.JFrame {
         passwordIdTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
+        register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,17 +59,18 @@ public class loginPage extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Doctor", "Patient", "Secretary" }));
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        login.setText("Login");
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Register");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        register.setActionCommand("register");
+        register.setLabel("register");
+        register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registerActionPerformed(evt);
             }
         });
 
@@ -95,12 +97,12 @@ public class loginPage extends javax.swing.JFrame {
                             .addGap(126, 126, 126)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                                .addComponent(register)))
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +121,8 @@ public class loginPage extends javax.swing.JFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(login)
+                    .addComponent(register))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -133,7 +135,7 @@ public class loginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userIdTxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         
         String userID;
         String password;
@@ -158,7 +160,7 @@ public class loginPage extends javax.swing.JFrame {
          switch(clearanceLevel) {
             case "Administrator" :
                         try{
-                            File file = new File("C:\\uniWork\\clinic\\clinic\\checks\\adminClearanceCheck.txt"); 
+                            File file = new File("./checks\\adminclearanceCheck.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
 
                             while ((br.readLine()) != null) {
@@ -177,7 +179,7 @@ public class loginPage extends javax.swing.JFrame {
                                     passwordCheck = false;
                                 }
                                 if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)){
-                                    adminLogPage open= new adminLogPage();
+                                    adminLogedInScreen open= new adminLogedInScreen();
                                     open.setVisible(true);
                                 this.dispose();
                                 }
@@ -189,7 +191,7 @@ public class loginPage extends javax.swing.JFrame {
                         
             case "Doctor" :
                         try{
-                            File file = new File("C:\\uniWork\\clinic\\clinic\\checks\\doctorClearanceCheck.txt"); 
+                            File file = new File("./checks\\doctorClearanceCheck.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
@@ -208,7 +210,7 @@ public class loginPage extends javax.swing.JFrame {
                                     passwordCheck = false;
                                 }
                                 if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)){
-                                   doctorLogPage open= new doctorLogPage();
+                                   doctorLogedInScreen open= new doctorLogedInScreen();
                                     open.setVisible(true);
                                     this.dispose();
                                 }
@@ -220,7 +222,7 @@ public class loginPage extends javax.swing.JFrame {
                         
             case "Patient" :            
                         try{
-                            File file = new File("C:\\uniWork\\clinic\\clinic\\checks\\patientClearanceCheck.txt"); 
+                            File file = new File("./checks\\patientClearanceCheck.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
@@ -246,7 +248,7 @@ public class loginPage extends javax.swing.JFrame {
                                     patientCheck = false;
                                 }
                                 if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)&& Boolean.TRUE.equals(patientCheck)){
-                                patientLogPage open= new patientLogPage();
+                                patientLogedInScreen open= new patientLogedInScreen();
                                 open.setVisible(true);
                                 this.dispose();
                                 }
@@ -257,7 +259,7 @@ public class loginPage extends javax.swing.JFrame {
                         }
              case "Secretary" :            
                         try{
-                            File file = new File("C:\\uniWork\\clinic\\clinic\\checks\\patientClearanceCheck.txt"); 
+                            File file = new File("./checks\\secretaryClearanceCheck.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
@@ -276,7 +278,7 @@ public class loginPage extends javax.swing.JFrame {
                                     passwordCheck = false;
                                 }
                                 if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)){
-                                patientLogPage open= new patientLogPage();
+                                patientLogedInScreen open= new patientLogedInScreen();
                                 open.setVisible(true);
                                 this.dispose();
                                 }
@@ -295,24 +297,25 @@ public class loginPage extends javax.swing.JFrame {
          
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_loginActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        registerPage open = new registerPage();
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
+
+        registerPage1 open = new registerPage1();
         open.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_registerActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton login;
     private javax.swing.JTextField passwordIdTxt;
+    private javax.swing.JButton register;
     private javax.swing.JTextField userIdTxt;
     // End of variables declaration//GEN-END:variables
 }

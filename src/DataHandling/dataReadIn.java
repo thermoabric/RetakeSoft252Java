@@ -4,15 +4,54 @@
  * and open the template in the editor.
  */
 package DataHandling;
+import UserObj.user;
+import UserObj.secretaryObj;
+import UserObj.patientObj;
+import UserObj.doctorObj;
+import UserObj.AdminObj;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileReader;
+
+
+
+
+
+
+
 
 /**
  *
  * @author Block
  */
 public class dataReadIn {
+    
+    private ArrayList<user> AdminObj;
+    private ArrayList<user> doctorObj;
+    private ArrayList<user> patientObj;
+    private ArrayList<user> secretaryObj;
+    
+    
      
+    ArrayList<patientObj> patientRequest = new ArrayList<patientObj>();
     
+    File File = new File("./checks\\patientRequests.txt");
     
+    BufferedReader br = new BufferedReader(new FileReader(File));
+    
+   // while {
+
+
+
+
+
+
+
+
+
+}
     
     
     

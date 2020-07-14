@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Main;
+import Interfaces.loginPage;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Clinic {
      */
     public static void main(String[] args) {
         
-        
+        new loginPage().setVisible(true);
         
         // TODO code application logic here
     }

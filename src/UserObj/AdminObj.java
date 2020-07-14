@@ -9,27 +9,14 @@ package UserObj;
  *
  * @author Block
  */
-public abstract class AdminObj {
+public abstract class AdminObj extends user {
     
-    public String userID,password,firstName,lastName,clearance;
+    public String clearance;
     public int ID;
    
 
     
-    public String getUserID() {
-        return userID;
-    }
-    public String getPassword() {
-        return password;
-    }
-    
-    public String getfirstName() {
-        return firstName;
-    }
-    
-    public String getLastName() {
-        return lastName;
-    }
+   
     
     public String getClearance() {
         return clearance;
@@ -41,25 +28,7 @@ public abstract class AdminObj {
    
     
     
-    public void setUserID(String userID) {
-        this.userID = userID; 
-    }
-
-
-    public void setPassword(String password) {
-        
-        this.password = password;
-    }
-    
-     public void setFirstName(String firstName) {
-        
-        this.firstName = firstName;
-    }
-     
-    public void setLastName(String lastName) {
-        
-        this.lastName = lastName;
-    }
+   
     public void setClearance(String clearance) {
         
         this.clearance = clearance;

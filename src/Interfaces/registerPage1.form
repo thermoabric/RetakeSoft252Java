@@ -89,15 +89,17 @@
                                       <Component id="usernameIn1" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
                                       <Component id="firstNameIn" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
                                       <Component id="lastNameIn" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
-                                      <Component id="MobileIn" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
+                                      <Component id="mobileIn" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
                                       <Component id="cityIn" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="118" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="backtologin" min="-2" pref="103" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="registerAccountPatient" min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="163" max="32767" attributes="0"/>
@@ -130,7 +132,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="MobileIn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="mobileIn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -165,8 +167,11 @@
                       </Group>
                       <Component id="usernameIn1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" pref="79" max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="registerAccountPatient" pref="50" max="32767" attributes="0"/>
+                      <Component id="backtologin" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -233,12 +238,12 @@
             <Property name="text" type="java.lang.String" value="gender"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="registerAccountPatient">
           <Properties>
             <Property name="text" type="java.lang.String" value="request account"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerAccountPatientActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="passwordIn">
@@ -257,11 +262,19 @@
         </Component>
         <Component class="javax.swing.JTextField" name="cityIn">
         </Component>
-        <Component class="javax.swing.JTextField" name="MobileIn">
+        <Component class="javax.swing.JTextField" name="mobileIn">
         </Component>
         <Component class="javax.swing.JTextField" name="ageIn">
         </Component>
         <Component class="javax.swing.JTextField" name="genderIn">
+        </Component>
+        <Component class="javax.swing.JButton" name="backtologin">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="backtologin"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backtologinActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -317,16 +317,20 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
             out.newLine();
             out.write(gender);
             out.newLine();
-            out.write(patientNumber);    
+            out.write(patientNumber);   
+            out.close();
         }
         catch(Exception e){
             e.printStackTrace();
         }
         try{
+           
            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientClearanceCheck.txt", true));
+           out.newLine();
            out.write(username);
            out.newLine();
            out.write(password);
+           out.close();
             
            
         }
@@ -388,7 +392,8 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
                     out.newLine();
                     out.write(gender);
                     out.newLine();
-                    out.write(patientNumber);    
+                    out.write(patientNumber);
+                    out.close();
                     
                     
                     

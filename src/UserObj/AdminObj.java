@@ -11,32 +11,53 @@ package UserObj;
  */
 public abstract class AdminObj extends user {
     
-    public String clearance;
-    public int ID;
+    String userId,password,firstname,lastname;
+   
+
+    public AdminObj(String userId,String password,String firstname,String lastname) {
+        this.userId = userId;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
    
 
     
    
     
-    public String getClearance() {
-        return clearance;
-    }
-    public int getID() {
-        return ID;
-    }
-
    
-    
-    
-   
-    public void setClearance(String clearance) {
-        
-        this.clearance = clearance;
-    }
-    public void setID(int ID) {
-        
-        this.ID = ID;
-    }
 
      
    

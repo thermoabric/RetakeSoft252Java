@@ -30,17 +30,12 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
     
     public secretaryLogedInScreen() {
         initComponents();
-        
-        
-     
-        
-        
-        
-        
-        
-        
+    
         
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +75,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         nextpatient = new javax.swing.JButton();
         loadFirstPatient = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        patientNumber = new javax.swing.JTextField();
+        patientNumberin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,7 +164,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(genderIn, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(ageIn, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(patientNumber)))
+                                    .addComponent(patientNumberin)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -252,7 +247,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(patientNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientNumberin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nextpatient, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
@@ -281,17 +276,210 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ApproveAccountPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveAccountPatientActionPerformed
+        // reads the user wanting approval from array deletes user and moves there user data to approved accounts list 
+        
+        String username = usernameIn1.getText();
+        String password = passwordIn.getText();
+        String firstname = firstNameIn.getText();
+        String lastname = lastNameIn.getText();
+        String mobilePhoneNumber = mobileIn.getText();
+        String workPhoneNumber = workNumberIn.getText();
+        String addressline = addressLineIn.getText();
+        String city = cityIn.getText();
+        String dateOfBirth = dataOfBirthIn.getText();
+        String age = ageIn.getText();
+        String gender = genderIn.getText();
+        String patientNumber = patientNumberin.getText();
+       
+        
+         try{
+            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txt", true));
+            out.newLine();
+            out.write(username);
+            out.newLine();
+            out.write(password);
+            out.newLine();
+            out.write(firstname);
+            out.newLine();
+            out.write(lastname);
+            out.newLine();
+            out.write(mobilePhoneNumber);
+            out.newLine();
+            out.write(workPhoneNumber);
+            out.newLine();
+            out.write(addressline);
+            out.newLine();
+            out.write(city);
+            out.newLine();
+            out.write(dateOfBirth);
+            out.newLine();
+            out.write(age);
+            out.newLine();
+            out.write(gender);
+            out.newLine();
+            out.write(patientNumber);    
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        try{
+           BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientClearanceCheck.txt", true));
+           out.write(username);
+           out.newLine();
+           out.write(password);
+            
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+       
+        ArrayList<user> patientReqeuest = new ArrayList<user>();
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readPatientReqest(patientReqeuest);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        Object[] approvedPatient = patientReqeuest.toArray();
+        int length = approvedPatient.length;
+        data.removePatientToArray(patientReqeuest.get(0),patientReqeuest);
+        approvedPatient = patientReqeuest.toArray();
+        int currentLength = approvedPatient.length;
+        if (currentLength > 0){
+            for (int length1 = 0; 1 < currentLength; length1 = length1 + 1){
+            
+                username = ((UserObj.patientObj)approvedPatient[length1]).getUserID();
+                password = ((UserObj.patientObj)approvedPatient[length1]).getPassword();
+                firstname = ((UserObj.patientObj)approvedPatient[length1]).getfirstName();
+                lastname = ((UserObj.patientObj)approvedPatient[length1]).getLastName();
+                mobilePhoneNumber = ((UserObj.patientObj)approvedPatient[length1]).getMobilePhoneNumber();
+                workPhoneNumber = ((UserObj.patientObj)approvedPatient[length1]).getWorkPhoneNumber();
+                addressline = ((UserObj.patientObj)approvedPatient[length1]).getAddressLine();
+                city = ((UserObj.patientObj)approvedPatient[length1]).getCity();
+                dateOfBirth = ((UserObj.patientObj)approvedPatient[length1]).getDateOfBirth();
+                age  = ((UserObj.patientObj)approvedPatient[length1]).getAge();
+                gender = ((UserObj.patientObj)approvedPatient[length1]).getGender();
+                patientNumber  = ((UserObj.patientObj)approvedPatient[length1]).getPatientNumber();
+                try{
+                    BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientRequests.txt", false));
+                    out.newLine();
+                    out.write(username);
+                    out.newLine();
+                    out.write(password);
+                    out.newLine();
+                    out.write(firstname);
+                    out.newLine();
+                    out.write(lastname);
+                    out.newLine();
+                    out.write(mobilePhoneNumber);
+                    out.newLine();
+                    out.write(workPhoneNumber);
+                    out.newLine();
+                    out.write(addressline);
+                    out.newLine();
+                    out.write(city);
+                    out.newLine();
+                    out.write(dateOfBirth);
+                    out.newLine();
+                    out.write(age);
+                    out.newLine();
+                    out.write(gender);
+                    out.newLine();
+                    out.write(patientNumber);    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            }
+        catch(Exception e){
+            e.printStackTrace();
+        }     
+               
+            
+            
+            }
+        
+        
+        
+        
+        
+        
+        
+        }
+        
+        
+        
+        
+        
+        
         
        
 
     }//GEN-LAST:event_ApproveAccountPatientActionPerformed
 
     private void backtologinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtologinActionPerformed
-        // TODO add your handling code here:
+        loginPage open= new loginPage();
+        open.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backtologinActionPerformed
 
     private void nextpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextpatientActionPerformed
-        // TODO add your handling code here:
+       int counter = 0 ;
+       counter = counter + 1;
+       // this needs to be made global so it does not reset to 0 each time 
+       ArrayList<user> patientRequest = new ArrayList<user>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readPatientReqest(patientRequest);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayPatient = patientRequest.toArray();
+        int length = displayPatient.length;
+       
+       
+        usernameIn1.setText(((UserObj.patientObj)displayPatient[counter]).getUserID());
+        passwordIn.setText(((UserObj.patientObj)displayPatient[counter]).getPassword());
+        firstNameIn.setText(((UserObj.patientObj)displayPatient[counter]).getFirstname());
+        lastNameIn.setText(((UserObj.patientObj)displayPatient[counter]).getLastname());
+        mobileIn.setText(((UserObj.patientObj)displayPatient[counter]).getMobilePhoneNumber());
+        workNumberIn.setText(((UserObj.patientObj)displayPatient[counter]).getWorkPhoneNumber());
+        addressLineIn.setText(((UserObj.patientObj)displayPatient[counter]).getAddressLine());
+        cityIn.setText(((UserObj.patientObj)displayPatient[counter]).getCity());
+        dataOfBirthIn.setText(((UserObj.patientObj)displayPatient[counter]).getDateOfBirth());
+        ageIn.setText(((UserObj.patientObj)displayPatient[counter]).getAge());
+        genderIn.setText(((UserObj.patientObj)displayPatient[counter]).getGender());
+        patientNumberin.setText(((UserObj.patientObj)displayPatient[counter]).getPatientNumber());
+                                                  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_nextpatientActionPerformed
 
     private void loadFirstPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFirstPatientActionPerformed
@@ -310,7 +498,19 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         Object[] displayPatient = patientRequest.toArray();
         int length = displayPatient.length;
        
-o
+       
+        usernameIn1.setText(((UserObj.patientObj)displayPatient[0]).getUserID());
+        passwordIn.setText(((UserObj.patientObj)displayPatient[0]).getPassword());
+        firstNameIn.setText(((UserObj.patientObj)displayPatient[0]).getFirstname());
+        lastNameIn.setText(((UserObj.patientObj)displayPatient[0]).getLastname());
+        mobileIn.setText(((UserObj.patientObj)displayPatient[0]).getMobilePhoneNumber());
+        workNumberIn.setText(((UserObj.patientObj)displayPatient[0]).getWorkPhoneNumber());
+        addressLineIn.setText(((UserObj.patientObj)displayPatient[0]).getAddressLine());
+        cityIn.setText(((UserObj.patientObj)displayPatient[0]).getCity());
+        dataOfBirthIn.setText(((UserObj.patientObj)displayPatient[0]).getDateOfBirth());
+        ageIn.setText(((UserObj.patientObj)displayPatient[0]).getAge());
+        genderIn.setText(((UserObj.patientObj)displayPatient[0]).getGender());
+        patientNumberin.setText(((UserObj.patientObj)displayPatient[0]).getPatientNumber());
     }//GEN-LAST:event_loadFirstPatientActionPerformed
 
     /**
@@ -345,7 +545,7 @@ o
     private javax.swing.JButton nextpatient;
     private javax.swing.JTextField passwordIn;
     private javax.swing.JLabel passwordTxt;
-    private javax.swing.JTextField patientNumber;
+    private javax.swing.JTextField patientNumberin;
     private javax.swing.JLabel userIdTxt;
     private javax.swing.JTextField usernameIn1;
     private javax.swing.JTextField workNumberIn;

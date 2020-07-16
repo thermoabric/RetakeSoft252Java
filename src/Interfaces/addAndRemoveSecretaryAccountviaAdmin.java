@@ -195,20 +195,20 @@ public class addAndRemoveSecretaryAccountviaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         ArrayList<user> currentSecretarys1 = new ArrayList<user>();
+        ArrayList<user> currentSecretary1 = new ArrayList<user>();
         dataReadIn data = new dataReadIn();
         try{
-        data.readCurrentSecretarys(currentSecretarys1);
+        data.readCurrentSecretarys(currentSecretary1);
         }
         catch(Exception e){
                 e.printStackTrace();
             }
-        Object[] currentSecretarys = currentSecretarys1.toArray();
-        int length = currentSecretarys.length;
+        Object[] currentSecretary = currentSecretary1.toArray();
+        int length = currentSecretary.length;
         String[] username1 = new String[length], password1 = new String[length];
             for (int i = 0; i < length; i++) {
-                String name = ((UserObj.secretaryObj)currentSecretarys[i]).getUserID();
-                String pass = ((UserObj.secretaryObj)currentSecretarys[i]).getPassword();
+                String name = ((UserObj.secretaryObj)currentSecretary[i]).getUserId();
+                String pass = ((UserObj.secretaryObj)currentSecretary[i]).getPassword();
                 username1[i] = name;
                 password1[i] = pass;
             }
@@ -230,7 +230,7 @@ public class addAndRemoveSecretaryAccountviaAdmin extends javax.swing.JFrame {
                 passisTrue = false;
             }
             if(Boolean.TRUE.equals(passisTrue) && Boolean.TRUE.equals(userisTrue)){
-                data.removePatientToArray(currentSecretarys1.get(a), currentSecretarys1);
+                data.removeSecretary(currentSecretary1.get(a), currentSecretary1);
                 try{
                    BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\approvedSecretarys.txt", false));
                     clear.newLine();
@@ -243,14 +243,16 @@ public class addAndRemoveSecretaryAccountviaAdmin extends javax.swing.JFrame {
                 }
                     
                     for (int l = 0; l < length; l++) {
-                        currentSecretarys = currentSecretarys1.toArray();
-                        String userId = ((UserObj.secretaryObj)currentSecretarys[l]).getUserID();
-                        String password = ((UserObj.secretaryObj)currentSecretarys[l]).getPassword();
-                        String firstName = ((UserObj.secretaryObj)currentSecretarys[l]).getFirstname();
-                        String lastName = ((UserObj.secretaryObj)currentSecretarys[l]).getLastname();
+                        currentSecretary= currentSecretary1.toArray();
+                        String userId = ((UserObj.doctorObj)currentSecretary[l]).getUserId();
+                        String password = ((UserObj.doctorObj)currentSecretary[l]).getPassword();
+                        String firstName = ((UserObj.doctorObj)currentSecretary[l]).getFirstname();
+                        String lastName = ((UserObj.doctorObj)currentSecretary[l]).getLastname();
+                        
                         
                         try{
                             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedSecretarys.txt", true));
+                            out.newLine();
                             out.write(userId);
                             out.newLine();
                             out.write(password);
@@ -269,23 +271,12 @@ public class addAndRemoveSecretaryAccountviaAdmin extends javax.swing.JFrame {
                 }
             }
             a = a + 1;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         }
+    }                              
         
+ 
         
-        
-        
+    {
         
         
         
@@ -295,37 +286,7 @@ public class addAndRemoveSecretaryAccountviaAdmin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addAndRemoveSecretaryAccountviaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addAndRemoveSecretaryAccountviaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addAndRemoveSecretaryAccountviaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addAndRemoveSecretaryAccountviaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addAndRemoveSecretaryAccountviaAdmin().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField firstnameIn;

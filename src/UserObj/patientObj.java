@@ -1,143 +1,135 @@
 
 package UserObj;
-public class patientObj {
+public class patientObj extends user{
     
-    public String userID,password,firstName,lastName,clearance,mobilePhoneNumber,workPhoneNumber,addressLine,
-        city,postcode,dateOfBirth,age,gender;
-    public int ID;
-    public boolean accountAprroved;
+    public String userID,password,firstname,lastname,mobilePhoneNumber,workPhoneNumber,addressLine,
+        city,dateOfBirth,age,gender,patientNumber;
+
+    public patientObj(String userID,String password,String firstname, String lastname,String mobilePhoneNumber, String workPhoneNumber, String addressLine, String city, String dateOfBirth, String age, String gender, String patientNumber) {
+        this.userID = userID;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+  
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.workPhoneNumber = workPhoneNumber;
+        this.addressLine = addressLine;
+        this.city = city;
+        this.dateOfBirth = dateOfBirth;
+        this.age = age;
+        this.gender = gender;
+        this.patientNumber = patientNumber;
+    }
+    public patientObj(String userID,String password){
     
- 
+     this.userID = userID;
+     this.password = password;
     
     
     
-    
-    //getters
-    
+    }
+
     public String getUserID() {
         return userID;
     }
+
+    public void setUserID(String userId) {
+        this.userID = userId;
+    }
+
     public String getPassword() {
         return password;
     }
-      public boolean getaccountAprroved() {
-        return accountAprroved;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
-    public String getfirstName() {
-        return firstName;
+
+    public String getFirstname() {
+        return firstname;
     }
-    
-    public String getLastName() {
-        return lastName;
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
-    
-    public String getClearance() {
-        return clearance;
+
+    public String getLastname() {
+        return lastname;
     }
-    
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getMobilePhoneNumber() {
         return mobilePhoneNumber;
     }
-    
+
+    public void setMobilePhoneNumber(String mobilePhoneNumber) {
+        this.mobilePhoneNumber = mobilePhoneNumber;
+    }
+
     public String getWorkPhoneNumber() {
         return workPhoneNumber;
     }
-     
+
+    public void setWorkPhoneNumber(String workPhoneNumber) {
+        this.workPhoneNumber = workPhoneNumber;
+    }
+
     public String getAddressLine() {
         return addressLine;
     }
-      
+
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
     public String getCity() {
         return city;
     }
-    
-    public String getPostcode() {
-        return postcode;
+
+    public void setCity(String city) {
+        this.city = city;
     }
-    
+
     public String getDateOfBirth() {
         return dateOfBirth;
     }
-    
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getAge() {
         return age;
     }
-    
-    public String getGender() {
-        return gender;
-    } 
-    
-    public int getID() {
-        return ID;
-    }
-  
 
-   //setters 
-    
-    
-    public void setUserID(String userID) {
-        this.userID = userID; 
-    }
-
-
-    public void setPassword(String password) {
-        
-        this.password = password;
-    }
-    public void setAccountAprroved(boolean accountAprroved) {
-        
-        this.accountAprroved = accountAprroved;
-    }
-    
-     public void setFirstName(String firstName) {
-        
-        this.firstName = firstName;
-    }
-     
-    public void setLastName(String lastName) {
-        
-        this.lastName = lastName;
-    }
-    public void setClearance(String clearance) {
-        
-        this.clearance = clearance;
-    }
-    public void setMobilePhoneNumber(String mobilePhoneNumber) {
-        
-        this.mobilePhoneNumber = mobilePhoneNumber;
-    }
-    public void setWorkPhoneNumber(String workPhoneNumber) {
-        
-        this.workPhoneNumber = workPhoneNumber;
-    }
-    public void setAddressLine(String addressLine) {
-        
-        this.addressLine = addressLine;
-    }
-    public void setCity(String city) {
-        
-        this.city = city;
-    }
-    public void setPostcode(String postcode) {
-        
-        this.postcode = postcode;
-    }
-    public void setDateOfBirth(String dateOfBirth) {
-        
-        this.dateOfBirth = dateOfBirth;
-    }
     public void setAge(String age) {
-        
         this.age = age;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
     public void setGender(String gender) {
-        
         this.gender = gender;
     }
-    public void setID(int ID) {
-        
-        this.ID = ID;
+
+    public String getPatientNumber() {
+        return patientNumber;
     }
+
+    public void setPatientNumber(String patientNumber) {
+        this.patientNumber = patientNumber;
+    }
+    
+ 
+    
+   
+    
+   
    
 
      

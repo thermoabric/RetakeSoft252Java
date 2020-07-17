@@ -146,7 +146,7 @@ public class loginPage extends javax.swing.JFrame {
         boolean patientCheck;
         
         
-        String user,pass,firstName,lastName,homeNumber,mobile,workNumber,addressLine,city,postcode,dataOfBirth,age,gender;
+        String user,pass,firstName,lastName,workNumber,mobileNumber,addressLine,city,dataOfBirth,age,gender,patientNumber;
         
         
         userID = userIdTxt.getText();
@@ -160,7 +160,7 @@ public class loginPage extends javax.swing.JFrame {
          switch(clearanceLevel) {
             case "Administrator" :
                         try{
-                            File file = new File("./checks\\adminclearanceCheck.txt"); 
+                            File file = new File("./checks\\approvedAdmins.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
 
                             while ((br.readLine()) != null) {
@@ -191,11 +191,19 @@ public class loginPage extends javax.swing.JFrame {
                         
             case "Doctor" :
                         try{
-                            File file = new File("./checks\\doctorClearanceCheck.txt"); 
+                            File file = new File("./checks\\approvedDoctors.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
                                 pass = br.readLine();
+                                firstName = br.readLine();
+                                lastName = br.readLine();
+                                mobileNumber = br.readLine();
+                                addressLine = br.readLine();
+                                age = br.readLine();
+                                gender = br.readLine();
+                               
+                                
 
                                 if (userID.equals(user)){
                                     userCheck = true;
@@ -222,12 +230,23 @@ public class loginPage extends javax.swing.JFrame {
                         
             case "Patient" :            
                         try{
-                            File file = new File("./checks\\patientClearanceCheck.txt"); 
+                            File file = new File("./checks\\approvedPatients.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
                                 pass = br.readLine();
-                                patientApproved = br.readLine();
+                                firstName = br.readLine();
+                                lastName = br.readLine();
+                                mobileNumber = br.readLine();
+                                workNumber = br.readLine();
+                                addressLine = br.readLine();
+                                city = br.readLine();
+                                dataOfBirth = br.readLine();
+                                age = br.readLine();
+                                gender = br.readLine();
+                                patientNumber = br.readLine();
+                                
+                                
                                 if (userID.equals(user)){
                                     userCheck = true;
                                 }
@@ -241,13 +260,8 @@ public class loginPage extends javax.swing.JFrame {
                                 else{
                                     passwordCheck = false;
                                 }
-                                if (patientApproved.equals(patientApproved)){
-                                    patientCheck = true;
-                                }
-                                else {
-                                    patientCheck = false;
-                                }
-                                if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)&& Boolean.TRUE.equals(patientCheck)){
+                                
+                                if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)){
                                 patientLogedInScreen open= new patientLogedInScreen();
                                 open.setVisible(true);
                                 this.dispose();
@@ -259,7 +273,7 @@ public class loginPage extends javax.swing.JFrame {
                         }
              case "Secretary" :            
                         try{
-                            File file = new File("./checks\\secretaryClearanceCheck.txt"); 
+                            File file = new File("./checks\\approvedSecretary.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();
@@ -278,7 +292,7 @@ public class loginPage extends javax.swing.JFrame {
                                     passwordCheck = false;
                                 }
                                 if (Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(passwordCheck)){
-                                patientLogedInScreen open= new patientLogedInScreen();
+                               secretaryLogedInScreen open = new secretaryLogedInScreen();
                                 open.setVisible(true);
                                 this.dispose();
                                 }

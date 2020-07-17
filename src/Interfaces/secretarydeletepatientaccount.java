@@ -101,14 +101,14 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addGap(46, 46, 46)
                                 .addComponent(jButton3)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -122,7 +122,7 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -170,7 +170,7 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
             if(Boolean.TRUE.equals(passisTrue) && Boolean.TRUE.equals(userisTrue)){
                 data.removePatientToArray(currentPatients1.get(a), currentPatients1);
                 try{
-                   BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txto", false));
+                   BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txt", false));
                     clear.newLine();
                 }
                 catch(Exception e){
@@ -183,9 +183,9 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                     for (int l = 0; l < length; l++) {
                         currentPatients = currentPatients1.toArray();
                         String userId = ((UserObj.patientObj)currentPatients[l]).getUserID();
-                        String  password = ((UserObj.patientObj)currentPatients[l]).getPassword();
+                        String password = ((UserObj.patientObj)currentPatients[l]).getPassword();
                         String firstName = ((UserObj.patientObj)currentPatients[l]).getFirstname();
-                        String lastName = ((UserObj.patientObj)currentPatients[l]).getLastName();
+                        String lastName = ((UserObj.patientObj)currentPatients[l]).getLastname();
                         String mobilePhoneNumber = ((UserObj.patientObj)currentPatients[l]).getMobilePhoneNumber();
                         String workPhoneNumber = ((UserObj.patientObj)currentPatients[l]).getWorkPhoneNumber();
                         String addressLine = ((UserObj.patientObj)currentPatients[l]).getAddressLine();
@@ -196,7 +196,6 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                         String PatientNumber = ((UserObj.patientObj)currentPatients[l]).getPatientNumber();
                         try{
                             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txt", true));
-                            out.newLine();
                             out.write(userId);
                             out.newLine();
                             out.write(password);
@@ -220,7 +219,9 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                             out.write(gender);
                             out.newLine();
                             out.write(PatientNumber);
+                            out.newLine();
                             out.close();
+                            
                     }
                     catch(Exception e){
                         e.printStackTrace();
@@ -229,17 +230,6 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                 }
             }
             a = a + 1;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         }
         

@@ -9,7 +9,7 @@ package UserObj;
  *
  * @author Block
  */
-public abstract class AdminObj extends user {
+public class AdminObj extends user {
     
     String userId,password,firstname,lastname;
    

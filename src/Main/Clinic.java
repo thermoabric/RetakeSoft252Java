@@ -5,6 +5,8 @@
  */
 package Main;
 import Interfaces.loginPage;
+import Interfaces.registerPage1;
+
 
 /**
  *
@@ -18,6 +20,8 @@ public class Clinic {
     public static void main(String[] args) {
         
         new loginPage().setVisible(true);
+        
+        
         
         // TODO code application logic here
     }

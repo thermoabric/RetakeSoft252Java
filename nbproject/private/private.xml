@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Interfaces/registerPage.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/UserObj/AdminObj.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/DataHandling/dataReadIn.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Interfaces/adminLogPage.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Interfaces/doctorLogPage.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/UserObj/secretaryObj.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Interfaces/loginPage.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Interfaces/secretaryLogPage.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/Main/Clinic.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/UserObj/doctorObj.java</file>
-            <file>file:/C:/Users/Block/Desktop/assighment/src/DataHandling/dataStructure</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/adminLogedInScreen.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/patientLogedInScreen.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/secretaryLogedInScreen.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/addAndRemoveDoctorAccountviaAdmin.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/UserObj/AdminObj.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/createAdminScreen.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/DataHandling/dataReadIn.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/readme.txt</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/secretarydeletepatientaccount.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/UserObj/secretaryObj.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/UserObj/patientObj.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/UserObj/doctorObj.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/addAndRemoveSecretaryAccountviaAdmin.java</file>
+            <file>file:/C:/Users/Block/Desktop/retakes/soft252/RetakeSoft252Java/src/Interfaces/viewPrescriptionPatient.java</file>
         </group>
     </open-files>
 </project-private>

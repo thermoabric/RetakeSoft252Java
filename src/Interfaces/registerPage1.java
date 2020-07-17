@@ -240,7 +240,7 @@ public class registerPage1 extends javax.swing.JFrame {
         String age = ageIn.getText();
         String gender = genderIn.getText();
         String patientNumber = ("P" + firstname + rand.nextInt(10)+rand.nextInt(10)+rand.nextInt(10)+rand.nextInt(10));
-        String patientApproval = "0";
+       
         
        
         try (FileWriter writer = new FileWriter("./checks\\patientRequests.txt\\");
@@ -270,7 +270,7 @@ public class registerPage1 extends javax.swing.JFrame {
         out.newLine();
         out.write(patientNumber);
         out.newLine();
-        out.write(patientApproval);
+        
         
         } catch (IOException e) {
 	System.err.format("IOException: %s%n", e);
@@ -283,7 +283,9 @@ public class registerPage1 extends javax.swing.JFrame {
     }//GEN-LAST:event_registerAccountPatientActionPerformed
 
     private void backtologinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtologinActionPerformed
-        // TODO add your handling code here:
+        loginPage open = new loginPage();
+        open.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backtologinActionPerformed
 
     /**

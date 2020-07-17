@@ -1,0 +1,45 @@
+
+Dhannah3242
+letmein
+hannah
+frankline
+74343434334
+Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
+56
+female
+
+Djordann6543
+letmein
+jordan
+andrews
+74343434334
+Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
+34
+male
+
+Djohnson8765
+letmein
+johnson
+smith
+74343434334
+Fictitious Clinic, Diagon Alley, DrakeCircus, Plymouth, PL4 8AA
+45
+male
+
+testdoctorcreationviaadmin
+password
+benny
+jenkins
+07324523735
+thisis adressline
+45
+male
+
+testdocotor2
+passwordisbig
+ben
+smith
+034554545
+plymouth
+23
+female

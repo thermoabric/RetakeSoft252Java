@@ -5,8 +5,11 @@
  */
 package Interfaces;
 
+import DataHandling.dataReadIn;
+import UserObj.user;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 /**
  *
@@ -73,6 +76,11 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
         });
 
         jButton3.setText("remove account");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("username");
 
@@ -255,6 +263,97 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
     private void firstnameInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnameInActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstnameInActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ArrayList<user> currentDoctor1 = new ArrayList<user>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readCurrentDoctors(currentDoctor1);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        Object[] currentDoctor = currentDoctor1.toArray();
+        int length = currentDoctor.length;
+        String[] username1 = new String[length], password1 = new String[length];
+            for (int i = 0; i < length; i++) {
+                String name = ((UserObj.doctorObj)currentDoctor[i]).getUserId();
+                String pass = ((UserObj.doctorObj)currentDoctor[i]).getPassword();
+                username1[i] = name;
+                password1[i] = pass;
+            }
+        int a = 0;
+        boolean userisTrue;
+        boolean passisTrue;
+        
+        while( a < length){
+            if(username1[a].equals(usernameIn.getText())){
+                userisTrue = true;
+            }
+            else{
+                userisTrue = false;
+            }
+            if(password1[a].equals(passwordIn.getText())){
+                passisTrue = true;
+            }
+            else{
+                passisTrue = false;
+            }
+            if(Boolean.TRUE.equals(passisTrue) && Boolean.TRUE.equals(userisTrue)){
+                data.removeDoctor(currentDoctor1.get(a), currentDoctor1);
+                try{
+                   BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", false));
+                    clear.newLine();
+                }
+                catch(Exception e){
+                e.printStackTrace();
+                }
+                if(length != 1){
+                    length = length - 1;
+                }
+                    
+                    for (int l = 0; l < length; l++) {
+                        currentDoctor = currentDoctor1.toArray();
+                        String userId = ((UserObj.doctorObj)currentDoctor[l]).getUserId();
+                        String password = ((UserObj.doctorObj)currentDoctor[l]).getPassword();
+                        String firstName = ((UserObj.doctorObj)currentDoctor[l]).getFirstname();
+                        String lastName = ((UserObj.doctorObj)currentDoctor[l]).getLastname();
+                        String mobilenumber = ((UserObj.doctorObj)currentDoctor[l]).getMobileNumber();
+                        String addressline = ((UserObj.doctorObj)currentDoctor[l]).getAddressline();
+                        String age = ((UserObj.doctorObj)currentDoctor[l]).getAge();
+                        String gender = ((UserObj.doctorObj)currentDoctor[l]).getGender();
+                        
+                        try{
+                            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", true));
+                            out.newLine();
+                            out.write(userId);
+                            out.newLine();
+                            out.write(password);
+                            out.newLine();
+                            out.write(firstName);
+                            out.newLine();
+                            out.write(lastName);
+                            out.newLine();
+                            out.write(mobilenumber);
+                            out.newLine();
+                            out.write(addressline);
+                            out.newLine();
+                            out.write(age);
+                            out.newLine();
+                            out.write(gender);
+                            out.newLine();
+                            out.close();
+                            
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
+                }
+            }
+            a = a + 1;
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

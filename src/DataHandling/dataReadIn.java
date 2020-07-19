@@ -297,14 +297,13 @@ public class dataReadIn {
         while ((br.readLine()) != null) {
              date = br.readLine();
              username = br.readLine();
-             password = br.readLine();
              firstname = br.readLine();
              patientnumber = br.readLine();
              doctornumber = br.readLine();
              time = br.readLine();
              
             
-            userRequests.userAppointments a = new userAppointments(date,username, password, firstname,patientnumber,doctornumber,time);
+            userRequests.userAppointments a = new userAppointments(date,username, firstname,patientnumber,doctornumber,time);
             addAppointment(a, appointments);
         }
      
@@ -321,14 +320,13 @@ public void readRequestedAppointments(ArrayList<userAppointments> appointments) 
         while ((br.readLine()) != null) {
              date = br.readLine();
              username = br.readLine();
-             password = br.readLine();
              firstname = br.readLine();
              patientnumber = br.readLine();
              doctornumber = br.readLine();
              time = br.readLine();
              
             
-            userRequests.userAppointments a = new userAppointments(date,username, password, firstname,patientnumber,doctornumber,time);
+            userRequests.userAppointments a = new userAppointments(date,username, firstname,patientnumber,doctornumber,time);
             addAppointment(a, appointments);
         }
 

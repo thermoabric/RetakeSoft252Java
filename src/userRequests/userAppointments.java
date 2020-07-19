@@ -13,16 +13,14 @@ public class userAppointments {
     
     public String appointmentDate;
     public String username;
-    public String password;
     public String paitientName;
     public String paitientNumber;
     public String doctorName;
     public String timeOfAppointment;
 
-    public userAppointments(String appointmentDate, String username,String password, String paitientName,String paitientNumber, String doctorName, String timeOfAppointment) {
+    public userAppointments(String appointmentDate, String username, String paitientName,String paitientNumber, String doctorName, String timeOfAppointment) {
         this.appointmentDate = appointmentDate;
         this.username = username;
-        this.password = password;
         this.paitientName = paitientName;
         this.paitientNumber = paitientNumber;
         this.doctorName = doctorName;
@@ -45,13 +43,13 @@ public class userAppointments {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public String getPaitientName() {
         return paitientName;

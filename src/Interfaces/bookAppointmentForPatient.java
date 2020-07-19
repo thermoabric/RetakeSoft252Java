@@ -5,9 +5,25 @@
  */
 package Interfaces;
 
+import DataHandling.dataReadIn;
+import Main.Clinic;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import userRequests.userAppointments;
+import DataHandling.dataReadIn;
+import UserObj.user;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import userRequests.userAppointments;
+import Main.Clinic;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
 /**
  *
  * @author Block
@@ -78,6 +94,11 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
         jLabel7.setText("time ");
 
         jButton2.setText("propose appointment");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +206,33 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void createAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAppointmentActionPerformed
+        
+        ArrayList<userAppointments> userAppointments = new ArrayList<userAppointments>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readRequestedAppointments(userAppointments);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayAppointment = userAppointments.toArray();
+        int length = displayAppointment.length;
+        
+        
+        
+        String date2 ;
+        String username2;
+        String name2;
+        String patientnumber2 ;
+        String doctorrequested2 ;
+        String timerequested2 ;
+        
+        
+        
+        
         String date = dateIn.getText();
         String username = usernameIn.getText();
         String name = nameIn.getText();
@@ -193,8 +241,57 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
         String doctorrequested = doctorIn.getText();
         String timerequested = timeIn.getText();
         
-         try{
-                                       BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorProposeAppointment.txt", true));
+        
+        boolean dateCheck;
+        boolean doctorrequestedCheck;
+        boolean timerrequestedCheck;
+        
+        try{
+                            File file = new File("./checks\\appointments.txt"); 
+                            BufferedReader br = new BufferedReader(new FileReader(file));
+
+                            while ((br.readLine()) != null) {
+                                date2 = br.readLine();
+                                username2 = br.readLine();
+                                name2 = br.readLine();
+                                patientnumber2 = br.readLine();
+                                doctorrequested2 = br.readLine();
+                                timerequested2 = br.readLine();
+                                
+                                
+                                
+                                if (date.equals(date2)){
+                                    dateCheck = true;
+                                }
+                                else {
+                                    dateCheck = false;
+                                }
+                                if (doctorrequested.equals(doctorrequested2)){
+                                    doctorrequestedCheck = true;
+                                }
+                                else{
+                                    doctorrequestedCheck = false;
+                                }
+                                
+                                if (timerequested.equals(timerequested2)){
+                                    timerrequestedCheck = true;
+                                }
+                                else{
+                                    timerrequestedCheck = false;
+                                }
+                                
+                                
+                                if (Boolean.TRUE.equals(dateCheck) && Boolean.TRUE.equals(doctorrequestedCheck)&&Boolean.TRUE.equals(timerrequestedCheck) ){
+                                    Clinic.infoBox("Sorry the doctor is booked for this date and time ", "appointment not availible  ");
+                                    break;
+                                    
+                                  
+                                }
+                                else{
+                                    
+
+                                    try{
+                                       BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\appointments.txt", true));
                                        out.newLine();
                                        out.newLine();
                                        out.write(date);
@@ -202,8 +299,6 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
                                        out.write(username);
                                        out.newLine();
                                        out.write(name);
-                                       out.newLine();
-                                       out.write("placeHolder");
                                        out.newLine();
                                        out.write(patientnumber);
                                        out.newLine();
@@ -216,7 +311,15 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
                                    catch(Exception e){
                                        e.printStackTrace();
                                    }
-        
+                                    
+                                Clinic.infoBox("appointment booked ", "appointment availible  ");   
+                                break;
+                                }
+                            }
+        }
+     catch(Exception e){
+        e.printStackTrace();
+            }                               
         
         
         
@@ -228,6 +331,133 @@ public class bookAppointmentForPatient extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_createAppointmentActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList<userAppointments> userAppointments = new ArrayList<userAppointments>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readRequestedAppointments(userAppointments);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayAppointment = userAppointments.toArray();
+        int length = displayAppointment.length;
+        
+        
+        
+        String date2 ;
+        String username2;
+        String name2;
+        String patientnumber2 ;
+        String doctorrequested2 ;
+        String timerequested2 ;
+        
+        
+        
+        
+        String date = dateIn.getText();
+        String username = usernameIn.getText();
+        String name = nameIn.getText();
+        //String password = passwordIn.getText();
+        String patientnumber = patientIn.getText();
+        String doctorrequested = doctorIn.getText();
+        String timerequested = timeIn.getText();
+        
+        
+        boolean dateCheck;
+        boolean doctorrequestedCheck;
+        boolean timerrequestedCheck;
+        
+        try{
+                            File file = new File("./checks\\appointments.txt"); 
+                            BufferedReader br = new BufferedReader(new FileReader(file));
+
+                            while ((br.readLine()) != null) {
+                                date2 = br.readLine();
+                                username2 = br.readLine();
+                                name2 = br.readLine();
+                                patientnumber2 = br.readLine();
+                                doctorrequested2 = br.readLine();
+                                timerequested2 = br.readLine();
+                                
+                                
+                                
+                                if (date.equals(date2)){
+                                    dateCheck = true;
+                                }
+                                else {
+                                    dateCheck = false;
+                                }
+                                if (timerequested.equals(timerequested2)){
+                                    timerrequestedCheck = true;
+                                }
+                                else{
+                                    timerrequestedCheck = false;
+                                }
+                                
+                                
+                                if (Boolean.TRUE.equals(dateCheck) &&Boolean.TRUE.equals(timerrequestedCheck) ){
+                                    Clinic.infoBox("Sorry the patient is booked for this date and time ", "appointment not availible  ");
+                                    break;
+                                    
+                                  
+                                }
+                                else{
+                                    
+
+                                    try{
+                                       BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorProposeAppointment.txt", true));
+                                       out.newLine();
+                                       out.write(date);
+                                       out.newLine();
+                                       out.write(username);
+                                       out.newLine();
+                                       out.write(name);
+                                       out.newLine();
+                                       out.write(patientnumber);
+                                       out.newLine();
+                                       out.write(doctorrequested);
+                                       out.newLine();
+                                       out.write(timerequested);
+                                       out.newLine();         
+                                       out.close();
+                                   }
+                                   catch(Exception e){
+                                       e.printStackTrace();
+                                   }
+                                Clinic.infoBox("appointment proposed ", "appointment availible  ");   
+                                break;
+                                }
+                            }
+        }
+     catch(Exception e){
+        e.printStackTrace();
+            }                               
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

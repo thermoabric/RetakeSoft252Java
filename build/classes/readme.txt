@@ -14,4 +14,9 @@ functionality as follows:
 12. Receive requests for appointments. Secretary 19/07/2020 WORKING  NEEDS BUG FIXING  approve patietn appointmetn request 
 13. Create an appointment between a patient and a free doctor.DOCTOR FREE CHECK WORKING Secretary 19/07/2020 
 14. Propose and create future appointments for a specific patient. Doctor WORKING 19/07/2020
-15. Request appointment – there should be an avenue to ask for a specific doctor and a range of potential dates. working user can ask for multi dates secretary approves what date to give. 19/07/2020
+15. Request appointment – there should be an avenue to ask for a specific doctor and a range of potential dates. working user can ask for multi dates secretary approves what date to give. 19/07/2020 WORKING 
+16. Rate doctors and provide feedback messages. Patient
+17. View doctors’ ratings. Patient
+18. View the ratings of the doctors. Administrator
+19. Provide feedback to each doctor based on ratings and comments from patients. Administrator
+

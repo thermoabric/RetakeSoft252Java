@@ -292,7 +292,7 @@ public class dataReadIn {
     
     BufferedReader br = new BufferedReader(new FileReader(file)); 
         
-        String date, username,password,firstname,patientnumber,doctornumber,time;    
+        String date, username,firstname,patientnumber,doctornumber,time;    
         
         while ((br.readLine()) != null) {
              date = br.readLine();
@@ -315,7 +315,7 @@ public void readRequestedAppointments(ArrayList<userAppointments> appointments) 
     
     BufferedReader br = new BufferedReader(new FileReader(file)); 
         
-        String date, username,password,firstname,patientnumber,doctornumber,time;    
+        String date, username,firstname,patientnumber,doctornumber,time;    
         
         while ((br.readLine()) != null) {
              date = br.readLine();

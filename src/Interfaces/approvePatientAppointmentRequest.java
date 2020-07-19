@@ -59,7 +59,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         doctorrequestedIn = new javax.swing.JTextField();
         patientnumberIn = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        timerequestedIn = new javax.swing.JTextField();
+        timegivenIn = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -89,6 +89,12 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         jLabel2.setText("Dates Requested");
 
         jLabel3.setText("patient username");
+
+        dateIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateInActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("patient name ");
 
@@ -173,7 +179,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(timerequestedIn, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(timegivenIn, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                     .addComponent(dateIn))
                 .addGap(44, 44, 44))
         );
@@ -207,7 +213,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(timerequestedIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timegivenIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(timesRequestedIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -276,7 +282,10 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         String name = nameIn.getText();
         String patientnumber = patientnumberIn.getText();
         String doctorrequested = doctorrequestedIn.getText();
-        String timerequested = timerequestedIn.getText();
+        String timerequested = timegivenIn.getText();
+        String dateGiven = dateIn.getText();
+        String timeGiven = timegivenIn.getText();
+        
         
         String date2 ;
         String username2;
@@ -337,8 +346,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                                     try{
                                        BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\appointments.txt", true));
                                        out.newLine();
-                                       out.newLine();
-                                       out.write(date);
+                                       out.write(dateGiven);
                                        out.newLine();
                                        out.write(username);
                                        out.newLine();
@@ -348,7 +356,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                                        out.newLine();
                                        out.write(doctorrequested);
                                        out.newLine();
-                                       out.write(timerequested);
+                                       out.write(timeGiven);
                                        out.newLine();         
                                        out.close();
                                    }
@@ -377,6 +385,19 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                                     data.removeAppointments(appointmentReqeuest.get(tickerforwrite.nextRequest),appointmentReqeuest);
                                     approvedappointment = appointmentReqeuest.toArray();
                                     int currentLength = approvedappointment.length;  
+                                    if (currentLength > 0){
+                                    for (int length1 = 0; length1 < currentLength; length1 = length1 + 1){
+
+                                        date = ((userRequests.userAppointments) approvedappointment[length1]).getAppointmentDate();
+                                        username = ((userRequests.userAppointments) approvedappointment[length1]).getUsername();
+                                        name = ((userRequests.userAppointments) approvedappointment[length1]).getUsername();
+                                        patientnumber = ((userRequests.userAppointments) approvedappointment[length1]).getPaitientName();
+                                        doctorrequested = ((userRequests.userAppointments) approvedappointment[length1]).getDoctorName();
+                                        timerequested = ((userRequests.userAppointments) approvedappointment[length1]).getTimeOfAppointment();
+                                        
+                                    
+                                    
+                                    
                                     try{
                                         BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientAppointmentRequest.txt", true));
                                         out.newLine();
@@ -398,7 +419,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                                     catch(Exception e){
                                         e.printStackTrace();
                                     }     
-                                    
+                                    }
                                 Clinic.infoBox("appointment booked ", "appointment availible  ");   
                                 break;
                                     
@@ -407,12 +428,12 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                                 }
                             }
                         }
-                        catch(Exception e) {
-                            e.printStackTrace();
-                        }
+                        
         
         
-        
+        }catch(Exception e){
+           e.printStackTrace();
+                  }    
      
         
                 
@@ -442,7 +463,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         nameIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getPaitientName());
         patientnumberIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getPaitientNumber());
         doctorrequestedIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getDoctorName());
-        timerequestedIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getTimeOfAppointment());
+        timegivenIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getTimeOfAppointment());
         
         
         
@@ -454,6 +475,10 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void dateInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,7 +535,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nameIn;
     private javax.swing.JTextField patientnumberIn;
-    private javax.swing.JTextField timerequestedIn;
+    private javax.swing.JTextField timegivenIn;
     private javax.swing.JTextField timesRequestedIn;
     private javax.swing.JTextField usernameIn;
     // End of variables declaration//GEN-END:variables

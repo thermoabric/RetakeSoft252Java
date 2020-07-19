@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import UserObj.user;
 import DataHandling.dataReadIn;
+import Main.Clinic;
 
 
 
@@ -34,7 +35,12 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         
     }
     
-    
+     public static class ticker {
+        static int nextRequest = 0 ;
+    }
+      public static class tickerrewrite {
+        static int nextRequest = 0 ;
+    }
     
 
     /**
@@ -330,6 +336,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
          try{
             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txt", true));
             out.newLine();
+            out.newLine();
             out.write(username);
             out.newLine();
             out.write(password);
@@ -358,23 +365,9 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         catch(Exception e){
             e.printStackTrace();
         }
-        try{
-           
-           BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientClearanceCheck.txt", true));
-           out.newLine();
-           out.write(username);
-           out.newLine();
-           out.write(password);
-           out.close();
-            
-           
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        
-       
-        ArrayList<user> patientReqeuest = new ArrayList<user>();
+         
+       Clinic.infoBox("account has been approved and request cleared ", "account created   ");
+       ArrayList<user> patientReqeuest = new ArrayList<user>();
         dataReadIn data = new dataReadIn();
         try{
             data.readPatientReqest(patientReqeuest);
@@ -385,7 +378,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         Object[] approvedPatient = patientReqeuest.toArray();
         int length = approvedPatient.length;
         try{
-            BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\patientRequests.txt", false));
+            BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\patientRequestsAccount.txt", false));
             clear.newLine();
         
         
@@ -400,7 +393,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         
         
         
-        data.removePatientToArray(patientReqeuest.get(0),patientReqeuest);
+        data.removePatientToArray(patientReqeuest.get(tickerrewrite.nextRequest),patientReqeuest);
         approvedPatient = patientReqeuest.toArray();
         int currentLength = approvedPatient.length;
         if (currentLength > 0){
@@ -419,7 +412,8 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
                 gender = ((UserObj.patientObj)approvedPatient[length1]).getGender();
                 patientNumber  = ((UserObj.patientObj)approvedPatient[length1]).getPatientNumber();
                 try{
-                    BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientRequests.txt", true));
+                    BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientRequestsAccount.txt", true));
+                    out.newLine();
                     out.write(username);
                     out.newLine();
                     out.write(password);
@@ -443,6 +437,7 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
                     out.write(gender);
                     out.newLine();
                     out.write(patientNumber);
+                    out.newLine();
                     out.close();
       
             }
@@ -479,8 +474,8 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_backtologinActionPerformed
 
     private void nextpatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextpatientActionPerformed
-       int counter = 0 ;
-       counter = counter + 1;
+        tickerrewrite.nextRequest = tickerrewrite.nextRequest + 1 ;
+        ticker.nextRequest = ticker.nextRequest + 1;
        // this needs to be made global so it does not reset to 0 each time 
        ArrayList<user> patientRequest = new ArrayList<user>();
         
@@ -497,18 +492,18 @@ public class secretaryLogedInScreen extends javax.swing.JFrame {
         int length = displayPatient.length;
        
        
-        usernameIn1.setText(((UserObj.patientObj)displayPatient[counter]).getUserID());
-        passwordIn.setText(((UserObj.patientObj)displayPatient[counter]).getPassword());
-        firstNameIn.setText(((UserObj.patientObj)displayPatient[counter]).getFirstname());
-        lastNameIn.setText(((UserObj.patientObj)displayPatient[counter]).getLastname());
-        mobileIn.setText(((UserObj.patientObj)displayPatient[counter]).getMobilePhoneNumber());
-        workNumberIn.setText(((UserObj.patientObj)displayPatient[counter]).getWorkPhoneNumber());
-        addressLineIn.setText(((UserObj.patientObj)displayPatient[counter]).getAddressLine());
-        cityIn.setText(((UserObj.patientObj)displayPatient[counter]).getCity());
-        dataOfBirthIn.setText(((UserObj.patientObj)displayPatient[counter]).getDateOfBirth());
-        ageIn.setText(((UserObj.patientObj)displayPatient[counter]).getAge());
-        genderIn.setText(((UserObj.patientObj)displayPatient[counter]).getGender());
-        patientNumberin.setText(((UserObj.patientObj)displayPatient[counter]).getPatientNumber());
+        usernameIn1.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getUserID());
+        passwordIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getPassword());
+        firstNameIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getFirstname());
+        lastNameIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getLastname());
+        mobileIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getMobilePhoneNumber());
+        workNumberIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getWorkPhoneNumber());
+        addressLineIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getAddressLine());
+        cityIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getCity());
+        dataOfBirthIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getDateOfBirth());
+        ageIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getAge());
+        genderIn.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getGender());
+        patientNumberin.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getPatientNumber());
                                                   
         
         

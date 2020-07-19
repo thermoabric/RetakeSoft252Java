@@ -12,6 +12,6 @@ functionality as follows:
 10. View appointment. Patient 17/07/2020 WORKING 
 11. View appointments. Doctor 17/07/2020 WORKING 
 12. Receive requests for appointments. Secretary 19/07/2020 WORKING 
-13. Create an appointment between a patient and a free doctor. Secretary 19/07/2020
-14.
-15.
+13. Create an appointment between a patient and a free doctor.DOCTOR FREE CHECK WORKING Secretary 19/07/2020 
+14. Propose and create future appointments for a specific patient. Doctor
+15. Request appointment – there should be an avenue to ask for a specific doctor and a range of potential dates.

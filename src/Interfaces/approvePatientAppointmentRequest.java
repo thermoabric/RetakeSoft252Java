@@ -7,13 +7,20 @@ package Interfaces;
 
 import DataHandling.dataReadIn;
 import UserObj.user;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import userRequests.userAppointments;
-
+import Main.Clinic;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 /**
  *
  * @author Block
  */
+
+
 public class approvePatientAppointmentRequest extends javax.swing.JFrame {
 
     /**
@@ -22,7 +29,13 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
     public approvePatientAppointmentRequest() {
         initComponents();
     }
-
+     public static class ticker {
+        static int nextRequest = 0 ;
+    }
+     public static class tickerforwrite {
+        static int nextRequest = 0 ;
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +55,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         usernameIn = new javax.swing.JTextField();
-        patientnameIn = new javax.swing.JTextField();
+        nameIn = new javax.swing.JTextField();
         doctorrequestedIn = new javax.swing.JTextField();
         patientnumberIn = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -50,6 +63,8 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        passwordIn = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,60 +97,79 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         jLabel7.setText("time requested");
 
         jButton3.setText("load next request");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("approve appointment ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("auto checks to not  double book doctor ");
+
+        jLabel9.setText("patient password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(nameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(patientnumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(timerequestedIn))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(doctorrequestedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(18, 153, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(passwordIn))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(usernameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(usernameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(patientnameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(patientnumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(timerequestedIn))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(doctorrequestedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 153, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,23 +178,27 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(usernameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(usernameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                    .addComponent(jLabel9)
+                    .addComponent(passwordIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(patientnameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -178,7 +216,7 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 30, Short.MAX_VALUE)
+                        .addGap(0, 26, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -211,7 +249,8 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
        
         dateIn.setText(((userRequests.userAppointments)displayAppointment[0]).getAppointmentDate());
         usernameIn.setText(((userRequests.userAppointments)displayAppointment[0]).getUsername());
-        patientnameIn.setText(((userRequests.userAppointments)displayAppointment[0]).getPaitientName());
+        nameIn.setText(((userRequests.userAppointments)displayAppointment[0]).getPaitientName());
+        passwordIn.setText(((userRequests.userAppointments)displayAppointment[0]).getPassword());
         patientnumberIn.setText(((userRequests.userAppointments)displayAppointment[0]).getPaitientNumber());
         doctorrequestedIn.setText(((userRequests.userAppointments)displayAppointment[0]).getDoctorName());
         timerequestedIn.setText(((userRequests.userAppointments)displayAppointment[0]).getTimeOfAppointment());
@@ -229,6 +268,199 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+       
+        String date = dateIn.getText();
+        String username = usernameIn.getText();
+        String name = nameIn.getText();
+        String password = passwordIn.getText();
+        String patientnumber = patientnumberIn.getText();
+        String doctorrequested = doctorrequestedIn.getText();
+        String timerequested = timerequestedIn.getText();
+        
+        String date2 ;
+        String username2;
+        String name2;
+        String patientnumber2 ;
+        String doctorrequested2 ;
+        String timerequested2 ;
+        String password2;
+        
+        boolean dateCheck;
+        boolean doctorrequestedCheck;
+        boolean timerrequestedCheck;
+        
+        try{
+                            File file = new File("./checks\\appointments.txt"); 
+                            BufferedReader br = new BufferedReader(new FileReader(file));
+
+                            while ((br.readLine()) != null) {
+                                date2 = br.readLine();
+                                username2 = br.readLine();
+                                password2 = br.readLine();
+                                name2 = br.readLine();
+                                patientnumber2 = br.readLine();
+                                doctorrequested2 = br.readLine();
+                                timerequested2 = br.readLine();
+                                
+                                
+                                
+                                if (date.equals(date2)){
+                                    dateCheck = true;
+                                }
+                                else {
+                                    dateCheck = false;
+                                }
+                                if (doctorrequested.equals(doctorrequested2)){
+                                    doctorrequestedCheck = true;
+                                }
+                                else{
+                                    doctorrequestedCheck = false;
+                                }
+                                
+                                if (timerequested.equals(timerequested2)){
+                                    timerrequestedCheck = true;
+                                }
+                                else{
+                                    timerrequestedCheck = false;
+                                }
+                                
+                                
+                                if (Boolean.TRUE.equals(dateCheck) && Boolean.TRUE.equals(doctorrequestedCheck)&&Boolean.TRUE.equals(timerrequestedCheck) ){
+                                    Clinic.infoBox("Sorry the doctor is booked for this date and time ", "appointment not availible  ");
+                                    break;
+                                    
+                                  
+                                }
+                                else{
+                                    
+
+                                    try{
+                                       BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\appointments.txt", true));
+                                       out.newLine();
+                                       out.newLine();
+                                       out.write(date);
+                                       out.newLine();
+                                       out.write(username);
+                                       out.newLine();
+                                       out.write(name);
+                                       out.newLine();
+                                       out.write(password);
+                                       out.newLine();
+                                       out.write(patientnumber);
+                                       out.newLine();
+                                       out.write(doctorrequested);
+                                       out.newLine();
+                                       out.write(timerequested);
+                                       out.newLine();         
+                                       out.close();
+                                   }
+                                   catch(Exception e){
+                                       e.printStackTrace();
+                                   }
+                                   ArrayList<userAppointments> appointmentReqeuest = new ArrayList<userAppointments>();
+                                    dataReadIn data = new dataReadIn();
+                                    try{
+                                        data.readRequestedAppointments(appointmentReqeuest);
+                                    }
+                                    catch(Exception e){
+                                        e.printStackTrace();
+                                    }
+                                    Object[] approvedappointment = appointmentReqeuest.toArray();
+                                    int length = approvedappointment.length;
+                                    try{
+                                        BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\patientAppointmentRequest.txt", false));
+                                        clear.newLine();
+
+
+                                    }
+                                     catch(Exception e){
+                                        e.printStackTrace();
+                                    }     
+                                    data.removeAppointments(appointmentReqeuest.get(tickerforwrite.nextRequest),appointmentReqeuest);
+                                    approvedappointment = appointmentReqeuest.toArray();
+                                    int currentLength = approvedappointment.length;  
+                                    try{
+                                        BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\patientAppointmentRequest.txt", true));
+                                        out.newLine();
+                                        out.write(date);
+                                        out.newLine();
+                                        out.write(username);
+                                        out.newLine();
+                                        out.write(name);
+                                        out.newLine();
+                                        out.write(password);
+                                        out.newLine();
+                                        out.write(patientnumber);
+                                        out.newLine();
+                                        out.write(doctorrequested);
+                                        out.newLine();
+                                        out.write(timerequested);
+                                        out.newLine();         
+                                        out.close();
+
+                                        }
+                                    catch(Exception e){
+                                        e.printStackTrace();
+                                    }     
+                                    
+                                Clinic.infoBox("appointment booked ", "appointment availible  ");   
+                                break;
+                                    
+                                    
+                                
+                                }
+                            }
+                        }
+                        catch(Exception e) {
+                            e.printStackTrace();
+                        }
+        
+        
+        
+     
+        
+                
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        tickerforwrite.nextRequest = tickerforwrite.nextRequest + 1 ;
+        ticker.nextRequest = ticker.nextRequest + 1;
+        
+         ArrayList<userAppointments> userAppointments = new ArrayList<userAppointments>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readRequestedAppointments(userAppointments);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayAppointment = userAppointments.toArray();
+        int length = displayAppointment.length;
+       
+       
+        dateIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getAppointmentDate());
+        usernameIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getUsername());
+        nameIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getPaitientName());
+        patientnumberIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getPaitientNumber());
+        doctorrequestedIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getDoctorName());
+        timerequestedIn.setText(((userRequests.userAppointments)displayAppointment[ticker.nextRequest]).getTimeOfAppointment());
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +512,9 @@ public class approvePatientAppointmentRequest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField patientnameIn;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField nameIn;
+    private javax.swing.JPasswordField passwordIn;
     private javax.swing.JTextField patientnumberIn;
     private javax.swing.JTextField timerequestedIn;
     private javax.swing.JTextField usernameIn;

@@ -53,7 +53,7 @@ public class dataReadIn {
     
   public void readPatientReqest(ArrayList<user> patientObj) throws Exception {
   
-    File file = new File("./checks\\patientRequests.txt");
+    File file = new File("./checks\\patientRequestsAccount.txt");
     
     BufferedReader br = new BufferedReader(new FileReader(file));
         String username;

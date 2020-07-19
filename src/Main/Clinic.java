@@ -6,6 +6,7 @@
 package Main;
 import Interfaces.loginPage;
 import Interfaces.registerPage1;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -13,6 +14,13 @@ import Interfaces.registerPage1;
  * @author Block
  */
 public class Clinic {
+    
+    
+    
+    public static void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
 
     /**
      * @param args the command line arguments

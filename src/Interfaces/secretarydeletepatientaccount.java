@@ -6,6 +6,7 @@
 package Interfaces;
 
 import DataHandling.dataReadIn;
+import Main.Clinic;
 import UserObj.user;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -22,6 +23,9 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
      */
     public secretarydeletepatientaccount() {
         initComponents();
+    }
+    public static class ticker {
+        static int nextRequest = 0 ;
     }
 
     /**
@@ -60,6 +64,11 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
         });
 
         jButton3.setText("next patient");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("username");
 
@@ -230,6 +239,10 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                 }
             }
             a = a + 1;
+            
+            Clinic.infoBox("Account has been deleted ", "notification ");
+            
+            
         
         }
         
@@ -259,6 +272,34 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_loadFirstPatientActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       ticker.nextRequest = ticker.nextRequest + 1;
+         ArrayList<user> patientRequest = new ArrayList<user>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readAccountDeletionRequests(patientRequest);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayPatient = patientRequest.toArray();
+        int length = displayPatient.length;
+       
+       
+        jTextField1.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getUserID());
+        jTextField2.setText(((UserObj.patientObj)displayPatient[ticker.nextRequest]).getPassword());
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -273,7 +273,7 @@ public class loginPage extends javax.swing.JFrame {
                         }
              case "Secretary" :            
                         try{
-                            File file = new File("./checks\\approvedSecretary.txt"); 
+                            File file = new File("./checks\\approvedSecretarys.txt"); 
                             BufferedReader br = new BufferedReader(new FileReader(file));
                             while ((br.readLine()) != null) {
                                 user = br.readLine();

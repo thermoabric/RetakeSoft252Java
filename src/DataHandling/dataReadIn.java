@@ -307,10 +307,38 @@ public class dataReadIn {
             userRequests.userAppointments a = new userAppointments(date,username, password, firstname,patientnumber,doctornumber,time);
             addAppointment(a, appointments);
         }
+     
    
-   
-   
-  }}
+  }
+public void readRequestedAppointments(ArrayList<userAppointments> appointments) throws Exception {
+  
+    File file = new File("./checks\\patientAppointmentRequest.txt");
+    
+    BufferedReader br = new BufferedReader(new FileReader(file)); 
+        
+        String date, username,password,firstname,patientnumber,doctornumber,time;    
+        
+        while ((br.readLine()) != null) {
+             date = br.readLine();
+             username = br.readLine();
+             password = br.readLine();
+             firstname = br.readLine();
+             patientnumber = br.readLine();
+             doctornumber = br.readLine();
+             time = br.readLine();
+             
+            
+            userRequests.userAppointments a = new userAppointments(date,username, password, firstname,patientnumber,doctornumber,time);
+            addAppointment(a, appointments);
+        }
+
+
+
+
+
+
+
+}}
    
    
    

@@ -11,7 +11,7 @@ functionality as follows:
 9. View prescription. Patient 17/07/2020 WORKING 
 10. View appointment. Patient 17/07/2020 WORKING 
 11. View appointments. Doctor 17/07/2020 WORKING 
-12.
-13.
+12. Receive requests for appointments. Secretary 19/07/2020 WORKING 
+13. Create an appointment between a patient and a free doctor. Secretary 19/07/2020
 14.
 15.

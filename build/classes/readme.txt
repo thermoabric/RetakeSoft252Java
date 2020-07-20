@@ -15,19 +15,18 @@ functionality as follows:
 13. Create an appointment between a patient and a free doctor.DOCTOR FREE CHECK WORKING Secretary 19/07/2020 
 14. Propose and create future appointments for a specific patient. Doctor WORKING 19/07/2020
 15. Request appointment – there should be an avenue to ask for a specific doctor and a range of potential dates. working user can ask for multi dates secretary approves what date to give. 19/07/2020 WORKING 
-16. Rate doctors and provide feedback messages. Patient 20/07/2020
+16. Rate doctors and provide feedback messages. Patient 20/07/2020 WORKING 
 17. View doctors’ ratings. Patient 20/07/2020 WORKING 
 18. View the ratings of the doctors. Administrator 20/07/2020 WORKING
-19. Provide feedback to each doctor based on ratings and comments from patients. Administrator 20/07/2020
+19. Provide feedback to each doctor based on ratings and comments from patients. Administrator 20/07/2020 WORKING
+20. Make notes during a consultation. Doctor 21/07/2020
+21. Create new medicines and request secretaries to order these. Doctor 20/07/2020 WORKING
+22. Order and stock medicines if necessary. Secretary 21/07/2020
+23. Give medicines to patients if available. Secretary
+24. Prescribe medicines and dosages Doctor 21/07/2020
+25. View his or her own history. Patient
+26. Inspect patient history. Doctor
 
-
-
-
-
-
-
-
-bugs 
-
-secretary delete patient account is messing up the output and does not delete user accoutn deletion fro mrequests txt 
-patient accept proposed appointment 
+EXTRA WORK TO DO IF TIME 
+patient ability to accept proposed appointments 
+Doctor view admin comments 

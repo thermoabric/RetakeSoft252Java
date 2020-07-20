@@ -309,7 +309,7 @@ public class viewDoctorRatingPatient extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-   ArrayList<user> doctors = new ArrayList<user>();
+        ArrayList<user> doctors = new ArrayList<user>();
         dataReadIn data = new dataReadIn();
         try{
         data.readCurrentDoctors(doctors);

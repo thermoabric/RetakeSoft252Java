@@ -5,9 +5,12 @@
  */
 package Interfaces;
 import DataHandling.dataReadIn;
+import Main.Clinic;
 import java.util.ArrayList;
 import UserObj.doctorObj;
 import UserObj.user;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 /**
  *
  * @author Block
@@ -48,7 +51,7 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        adminCommentIn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +94,11 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
         jLabel8.setText("add admin feeback comment");
 
         jButton2.setText("submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +121,7 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(adminCommentIn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +183,7 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminCommentIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(62, 62, 62)
                 .addComponent(jButton1)
@@ -238,6 +246,120 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList<user> doctors = new ArrayList<user>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readCurrentDoctors(doctors);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        Object[] currentdoctors = doctors.toArray();
+        
+        int length = currentdoctors.length;
+        String[] userName = new String[length];
+        for (int i = 0; i < length; i++) {
+            String name = ((UserObj.doctorObj)currentdoctors[i]).getFirstname();
+            userName[i] = name;
+        }
+        int a = 0;
+        boolean userisTrue;
+        String admincommentAdd = " " + adminCommentIn.getText()+ ".";
+        String comboComment; 
+       
+        
+               
+        
+        while( a < length){
+            if(userName[a].equals(doctornameIn.getText())){
+                userisTrue = true;
+            }
+            else{
+                userisTrue = false;
+            }
+            
+            if(Boolean.TRUE.equals(userisTrue)){
+                comboComment = ((UserObj.doctorObj)currentdoctors[a]).getAdminFeedback() + admincommentAdd;
+  
+                ((UserObj.doctorObj)currentdoctors[a]).setAdminFeedback(comboComment);
+                
+                
+                
+                
+                try{
+                   BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", false));
+                    clear.newLine();
+                }
+                catch(Exception e){
+                e.printStackTrace();
+                }
+                //if(length != 1){
+                    //length = length - 1;
+                //}
+                    
+                    for (int l = 0; l < length; l++) {
+                        currentdoctors = doctors.toArray();
+                        String userId = ((UserObj.doctorObj)currentdoctors[l]).getUserId();
+                        String password = ((UserObj.doctorObj)currentdoctors[l]).getPassword();
+                        String firstName = ((UserObj.doctorObj)currentdoctors[l]).getFirstname();
+                        String lastName = ((UserObj.doctorObj)currentdoctors[l]).getLastname();
+                        String mobilePhoneNumber = ((UserObj.doctorObj)currentdoctors[l]).getMobileNumber();
+                        String addressLine = ((UserObj.doctorObj)currentdoctors[l]).getAddressline();
+                        String age = ((UserObj.doctorObj)currentdoctors[l]).getAge();
+                        String gender = ((UserObj.doctorObj)currentdoctors[l]).getGender();
+                        String ratings = ((UserObj.doctorObj)currentdoctors[l]).getRatings();
+                        String comments = ((UserObj.doctorObj)currentdoctors[l]).getComments();
+                        String adminComments = ((UserObj.doctorObj)currentdoctors[l]).getAdminFeedback();
+                        
+                        
+                        try{
+                            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", true));
+                            out.newLine();
+                            out.write(userId);
+                            out.newLine();
+                            out.write(password);
+                            out.newLine();
+                            out.write(firstName);
+                            out.newLine();
+                            out.write(lastName);
+                            out.newLine();
+                            out.write(mobilePhoneNumber);
+                            out.newLine();
+                            out.write(addressLine);
+                            out.newLine();
+                            out.write(age);
+                            out.newLine();
+                            out.write(gender);
+                            out.newLine();
+                            out.write(ratings);
+                            out.newLine();
+                            out.write(comments);
+                            out.newLine();
+                            out.write(adminComments) ;
+                            out.newLine();
+                            out.close();
+                            
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
+                }   
+            }
+            a = a + 1;
+            
+            
+            
+            
+        
+        }
+        
+        
+        Clinic.infoBox("admin comment submitted", "notification ");  
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +396,7 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField adminCommentIn;
     private javax.swing.JTextArea commentIn;
     private javax.swing.JTextField doctoridIn;
     private javax.swing.JTextField doctornameIn;
@@ -291,7 +414,6 @@ public class viewDoctorRatingAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea ratingsIn;
     // End of variables declaration//GEN-END:variables
 }

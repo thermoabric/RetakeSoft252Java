@@ -11,10 +11,10 @@ package UserObj;
  */
 public class doctorObj extends user{
     
-    String userId,password,firstname,lastname,mobileNumber,addressline,age,gender;
+    String userId,password,firstname,lastname,mobileNumber,addressline,age,gender,ratings,comments,adminFeedback;
    
 
-    public doctorObj(String userId,String password,String firstname,String lastname,String mobileNumber ,String addressline,String age,String gender) {
+    public doctorObj(String userId,String password,String firstname,String lastname,String mobileNumber ,String addressline,String age,String gender,String ratings,String comments,String adminFeedback) {
         this.userId = userId;
         this.password = password;
         this.firstname = firstname;
@@ -23,6 +23,33 @@ public class doctorObj extends user{
         this.addressline = addressline;
         this.age = age;
         this.gender = gender;
+        this.ratings = ratings;
+        this.comments = comments;
+        this.adminFeedback = adminFeedback;
+    }
+
+    public String getAdminFeedback() {
+        return adminFeedback;
+    }
+
+    public void setAdminFeedback(String adminFeedback) {
+        this.adminFeedback = adminFeedback;
+    }
+
+    public String getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(String ratings) {
+        this.ratings = ratings;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
    

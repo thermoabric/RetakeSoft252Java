@@ -18,12 +18,7 @@ public class patientLogedInScreen extends javax.swing.JFrame {
         initComponents();
         
         
-        
-        
-        
-        
-        
-        
+      
         
     }
 
@@ -148,11 +143,15 @@ public class patientLogedInScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void doctorRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRatingActionPerformed
-        // TODO add your handling code here:
+        viewDoctorRatingPatient open = new viewDoctorRatingPatient();
+        open.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_doctorRatingActionPerformed
 
     private void requestAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestAppointmentActionPerformed
-        // TODO add your handling code here:
+        patientRequestAppointment open = new patientRequestAppointment();
+        open.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_requestAppointmentActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

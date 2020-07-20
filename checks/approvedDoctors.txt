@@ -7,6 +7,9 @@ frankline
 Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
 56
 female
+7
+doctor is great.
+this is admin feedback based on patient comments
 
 Djordann6543
 letmein
@@ -16,6 +19,9 @@ andrews
 Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
 34
 male
+5
+helped me alot with my issues. excellant doctor.
+this is admin feedback based on patient comments
 
 Djohnson8765
 letmein
@@ -25,6 +31,9 @@ smith
 Fictitious Clinic, Diagon Alley, DrakeCircus, Plymouth, PL4 8AA
 45
 male
+8
+amazing doctor. doctor could be better.
+this is admin feedback based on patient comments
 
 testdoctorcreationviaadmin
 password
@@ -34,6 +43,9 @@ jenkins
 thisis adressline
 45
 male
+9
+would see the same again.
+this is admin feedback based on patient comments
 
 testdocotor2
 passwordisbig
@@ -43,3 +55,6 @@ smith
 plymouth
 23
 female
+6 10
+helped me alot with my issues. excellant doctor.really good doctor great service.
+this is admin feedback based on patient comments 

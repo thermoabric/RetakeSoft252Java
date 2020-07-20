@@ -146,7 +146,7 @@ public class loginPage extends javax.swing.JFrame {
         boolean patientCheck;
         
         
-        String user,pass,firstName,lastName,workNumber,mobileNumber,addressLine,city,dataOfBirth,age,gender,patientNumber;
+        String user,pass,firstName,lastName,workNumber,mobileNumber,addressLine,city,dataOfBirth,age,gender,patientNumber,ratings,comments;
         
         
         userID = userIdTxt.getText();
@@ -202,6 +202,9 @@ public class loginPage extends javax.swing.JFrame {
                                 addressLine = br.readLine();
                                 age = br.readLine();
                                 gender = br.readLine();
+                                ratings = br.readLine();
+                                comments = br.readLine();
+                                
                                
                                 
 

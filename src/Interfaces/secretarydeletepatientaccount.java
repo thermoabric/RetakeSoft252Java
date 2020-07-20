@@ -205,6 +205,7 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
                         String PatientNumber = ((UserObj.patientObj)currentPatients[l]).getPatientNumber();
                         try{
                             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedPatients.txt", true));
+                            out.newLine();
                             out.write(userId);
                             out.newLine();
                             out.write(password);
@@ -240,13 +241,13 @@ public class secretarydeletepatientaccount extends javax.swing.JFrame {
             }
             a = a + 1;
             
-            Clinic.infoBox("Account has been deleted ", "notification ");
+           
             
             
         
         }
         
-        
+         Clinic.infoBox("Account has been deleted ", "notification ");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void loadFirstPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFirstPatientActionPerformed

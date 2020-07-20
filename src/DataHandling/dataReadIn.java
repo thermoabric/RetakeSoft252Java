@@ -165,6 +165,9 @@ public class dataReadIn {
         String addressline;
         String age;
         String gender;
+        String ratings;
+        String comments;
+        String adminFeedback;
         
         
         
@@ -177,10 +180,13 @@ public class dataReadIn {
        addressline = br.readLine();
        age = br.readLine();
        gender = br.readLine();
+       ratings = br.readLine();
+       comments = br.readLine();
+       adminFeedback = br.readLine();
  
        
        
-      user createDoctor = new doctorObj(username, password,firstname,lastname,mobilePhoneNumber,addressline,age,gender);
+      user createDoctor = new doctorObj(username, password,firstname,lastname,mobilePhoneNumber,addressline,age,gender,ratings,comments,adminFeedback);
        
       addDoctorToArray(createDoctor, doctorObj);
        

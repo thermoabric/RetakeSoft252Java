@@ -228,6 +228,9 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
         String addressline = addresslineIn.getText();
         String age = ageIn.getText();
         String gender = genderIn.getText();
+        String ratingsHolder = "ratings:";
+        String commentsholder = "Comments";
+        String adminFeedbackholder = "adminFeedBack";       
         
          try{
             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", true));
@@ -247,7 +250,14 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
             out.newLine();
             out.write(age);
             out.newLine();
-            out.write(gender);  
+            out.write(gender);
+            out.newLine();
+            out.write(ratingsHolder);
+            out.newLine();
+            out.write(commentsholder);
+            out.newLine();
+            out.write(adminFeedbackholder);
+            out.newLine();
             out.close();
         }
         catch(Exception e){
@@ -265,6 +275,8 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_firstnameInActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        
         ArrayList<user> currentDoctor1 = new ArrayList<user>();
         dataReadIn data = new dataReadIn();
         try{
@@ -322,7 +334,10 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
                         String addressline = ((UserObj.doctorObj)currentDoctor[l]).getAddressline();
                         String age = ((UserObj.doctorObj)currentDoctor[l]).getAge();
                         String gender = ((UserObj.doctorObj)currentDoctor[l]).getGender();
-                        
+                        String ratings = ((UserObj.doctorObj)currentDoctor[l]).getRatings();
+                        String comments = ((UserObj.doctorObj)currentDoctor[l]).getComments();
+                        String adminFeedback = ((UserObj.doctorObj)currentDoctor[l]).getAdminFeedback();
+                               
                         try{
                             BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\approvedDoctors.txt", true));
                             out.newLine();
@@ -341,6 +356,12 @@ public class addAndRemoveDoctorAccountviaAdmin extends javax.swing.JFrame {
                             out.write(age);
                             out.newLine();
                             out.write(gender);
+                            out.newLine();
+                            out.write(ratings);
+                            out.newLine();
+                            out.write(comments);
+                            out.newLine();
+                            out.write(adminFeedback);
                             out.newLine();
                             out.close();
                             

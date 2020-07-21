@@ -42,7 +42,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         patientNumberIn = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        patientNotes = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -66,9 +66,9 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
 
         jLabel1.setText("patient Number ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        patientNotes.setColumns(20);
+        patientNotes.setRows(5);
+        jScrollPane1.setViewportView(patientNotes);
 
         jLabel2.setText("patient notes");
 
@@ -190,7 +190,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         String medprescribed = nameMedIn.getText(); 
         String quatity = quaitityIn.getText();
         String dosage = dosageIn.getText();
-        
+        String patientNotesIn = patientNotes.getText();
         
         
          String firstname = "0";
@@ -292,7 +292,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         }
         if( Boolean.TRUE.equals(writecheck) && Boolean.TRUE.equals(writecheck2) ){
             try{
-                BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPresciption.txt", true));
+                BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPrescription.txt", true));
                 out.newLine();
                 out.write(username2);  
                 out.newLine();
@@ -302,11 +302,11 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 out.newLine();
                 out.write(lastname2);  
                 out.newLine();
-                out.write(username2);  
-                out.newLine();
                 out.write(address2);  
                 out.newLine();
                 out.write(gender2);  
+                out.newLine();
+                out.write(age2);  
                 out.newLine();
                 out.write(patientnumber);  
                 out.newLine();
@@ -314,9 +314,9 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 out.newLine();
                 out.write(lastname);  
                 out.newLine();
-                out.write(patientnumber);  
-                out.newLine();
                 out.write(addressdoctor);  
+                out.newLine();
+                out.write(patientNotesIn);  
                 out.newLine();
                 out.write(medprescribed);  
                 out.newLine();
@@ -393,8 +393,8 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nameMedIn;
+    private javax.swing.JTextArea patientNotes;
     private javax.swing.JTextField patientNumberIn;
     private javax.swing.JTextField quaitityIn;
     // End of variables declaration//GEN-END:variables

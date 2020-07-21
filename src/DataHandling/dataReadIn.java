@@ -282,6 +282,44 @@ public class dataReadIn {
        
        
    }
+   
+    public void readDoctorRequestedPresciptions(ArrayList<userPrescription> prescriptions) throws Exception {
+  
+    File file = new File("./checks\\doctorAssignedPrescription.txt");
+    
+    BufferedReader br = new BufferedReader(new FileReader(file)); 
+        
+        String username,password,firstname,lastname,addressline,gender,
+        age,patientnumber,doctorfirstname,doctorlastname,doctoraddressline,notes,meds,quantity,dosage;    
+        
+        while ((br.readLine()) != null) {
+             username = br.readLine();
+             password = br.readLine();
+             firstname = br.readLine();
+             lastname = br.readLine();
+             addressline = br.readLine();
+             gender = br.readLine();
+             age = br.readLine();
+             patientnumber = br.readLine();
+             doctorfirstname = br.readLine();
+             doctorlastname = br.readLine();
+             doctoraddressline = br.readLine();
+             notes = br.readLine();
+             meds = br.readLine();
+             quantity = br.readLine();
+             dosage = br.readLine();
+            
+            userRequests.userPrescription a = new userPrescription(username, password, firstname, lastname, addressline, gender,age,patientnumber,doctorfirstname,doctorlastname,doctoraddressline,notes,meds,quantity,dosage);
+            
+            addPrescription(a, prescriptions);
+        }
+       
+       
+   }
+   
+   
+   
+   
    public void addAppointment(userRequests.userAppointments a, ArrayList appointments)
         {
             

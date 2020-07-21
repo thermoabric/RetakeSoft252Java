@@ -5,6 +5,18 @@
  */
 package Interfaces;
 
+import DataHandling.dataReadIn;
+import Main.Clinic;
+import UserObj.user;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import userRequests.medicationStocks;
+import userRequests.userPrescription;
+
 /**
  *
  * @author Block
@@ -16,6 +28,9 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
      */
     public checkStockandApprovePresciption() {
         initComponents();
+    }
+     public static class ticker {
+        static int nextRequest = 0 ;
     }
 
     /**
@@ -32,10 +47,18 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        medicationNeededIn = new javax.swing.JTextField();
+        medicationIn = new javax.swing.JTextField();
         quatityNeededin = new javax.swing.JTextField();
         stockIn = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        doctorName = new javax.swing.JTextField();
+        patientNumber = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,67 +71,128 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
 
         jLabel1.setText("prescription medication requests ");
 
-        jLabel2.setText("medication name ");
+        jLabel2.setText("medication name needed ");
 
         jLabel3.setText("quatity needed");
 
         jLabel4.setText("quatity in stock");
 
-        jButton2.setText("load ");
+        jButton2.setText("load current stock levels");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jButton3.setText("load first medication needed ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("next medication needed");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("order needed stock ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("if stock avaible approve prescription to patient ");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("doctor name ");
+
+        jLabel6.setText("patient number ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(medicationNeededIn)
-                                    .addComponent(quatityNeededin, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(stockIn)))))
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(medicationIn)
+                                            .addComponent(quatityNeededin)
+                                            .addComponent(doctorName, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                            .addComponent(patientNumber)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(206, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(stockIn))
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(56, 56, 56)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(patientNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(medicationNeededIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(medicationIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(quatityNeededin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(quatityNeededin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(stockIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -124,35 +208,358 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
+        String mednameInStock; 
+        String medquantityInStock;
+        
+        {                                         
+        ArrayList<userRequests.medicationStocks> currentmeds1 = new ArrayList<userRequests.medicationStocks>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readCurrentMeds(currentmeds1);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        Object[] currentPatients = currentmeds1.toArray();
+        int length = currentPatients.length;
+        String[] username1 = new String[length];
+            for (int i = 0; i < length; i++) {
+                mednameInStock = ((userRequests.medicationStocks)currentPatients[i]).getMedicationname();
+                username1[i] = mednameInStock;
+                
+            }
+        int a = 0;
+        boolean medisTrue;
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        while( a < length){
+            if(username1[a].equals(medicationIn.getText())){
+                medisTrue = true;
+            }
+            else{
+                medisTrue = false;
+            }
+            
+            
+            if(Boolean.TRUE.equals(medisTrue)){
+                stockIn.setText(((userRequests.medicationStocks)currentPatients[a]).getQuanity());
+               
+                    
+                }
+            a = a + 1;
+            }
+        }
+       
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      ArrayList<userPrescription> prescriptions = new ArrayList<userPrescription>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readDoctorRequestedPresciptions(prescriptions);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayPatient =  prescriptions.toArray();
+        int length = displayPatient.length;
+        
+        
+        patientNumber.setText(((userRequests.userPrescription)displayPatient[0]).getPatientNumber());
+        doctorName.setText(((userRequests.userPrescription)displayPatient[0]).getDoctorfirstname());
+        medicationIn.setText(((userRequests.userPrescription)displayPatient[0]).getMeds());
+        quatityNeededin.setText(((userRequests.userPrescription)displayPatient[0]).getQuantity());
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ticker.nextRequest = ticker.nextRequest + 1;
+        
+        ArrayList<userPrescription> prescriptions = new ArrayList<userPrescription>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readDoctorRequestedPresciptions(prescriptions);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        // runs data read in functrion for reading data from pateint account request 
+        
+        Object[] displayPatient =  prescriptions.toArray();
+        int length = displayPatient.length;
+       
+        patientNumber.setText(((userRequests.userPrescription)displayPatient[ticker.nextRequest]).getPatientNumber());
+        doctorName.setText(((userRequests.userPrescription)displayPatient[ticker.nextRequest]).getDoctorfirstname());    
+        medicationIn.setText(((userRequests.userPrescription)displayPatient[ticker.nextRequest]).getMeds());
+        quatityNeededin.setText(((userRequests.userPrescription)displayPatient[ticker.nextRequest]).getQuantity());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+       String med = medicationIn.getText();
+        String name = quatityNeededin.getText();
+        
+        
+         try{
+            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\medsToOrder.txt", true));
+            out.newLine();
+            out.write(med);  
+            out.newLine();
+            out.write(name);
+            out.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+       
+       
+        
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        ArrayList<userPrescription> prescriptions = new ArrayList<userPrescription>();
+        dataReadIn data = new dataReadIn();
+        try{
+        data.readCurrentPresciptions(prescriptions);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        Object[] aPerscriptions = prescriptions.toArray();
+        int length = aPerscriptions.length;
+        String[] userName = new String[length];
+        
+        for (int i = 0; i < length; i++) {
+            String name = ((userRequests.userPrescription)aPerscriptions[i]).getPatientNumber();
+            userName[i] = name;
+            
+            
+        }
+        
+        int b = 0;
+        boolean userCheck;
+        
+        
+        while( b < length){
+            if(userName[b].equals(patientNumber.getText())){
+                userCheck = true;
+            }
+            else{
+                userCheck = false;
+            }
+            
+           
+            
+            if( Boolean.TRUE.equals(userCheck)){
+                String username = ((userRequests.userPrescription)aPerscriptions[b]).getUserID();
+                String password = ((userRequests.userPrescription)aPerscriptions[b]).getPassword();
+                String firstname = ((userRequests.userPrescription)aPerscriptions[b]).getFirstname();
+                String lastname = ((userRequests.userPrescription)aPerscriptions[b]).getLastname();
+                String addressline = ((userRequests.userPrescription)aPerscriptions[b]).getAddressLine();
+                String age = ((userRequests.userPrescription)aPerscriptions[b]).getAge();
+                String gender = ((userRequests.userPrescription)aPerscriptions[b]).getGender();
+                String patientNumber = ((userRequests.userPrescription)aPerscriptions[b]).getPatientNumber();
+                String doctorfirstname = ((userRequests.userPrescription)aPerscriptions[b]).getDoctorfirstname();
+                String doctorlastname = ((userRequests.userPrescription)aPerscriptions[b]).getDoctorlastname();
+                String doctoraddressline = ((userRequests.userPrescription)aPerscriptions[b]).getDoctoraddressline();
+                String notes = ((userRequests.userPrescription)aPerscriptions[b]).getNotes();
+                String meds = ((userRequests.userPrescription)aPerscriptions[b]).getMeds();
+                String quantity = ((userRequests.userPrescription)aPerscriptions[b]).getQuantity();
+                String dosage = ((userRequests.userPrescription)aPerscriptions[b]).getDosage();
+                
+                 try{
+                        BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\prescriptions.txt", true));
+                        out.newLine();
+                        out.write(username); 
+                        out.newLine();
+                        out.write(password); 
+                        out.newLine();
+                        out.write(firstname);  
+                        out.newLine();
+                        out.write(lastname);
+                        out.newLine();
+                        out.write(addressline);  
+                        out.newLine();
+                        out.write(age);  
+                        out.newLine();
+                        out.write(gender);  
+                        out.newLine();
+                        out.write(patientNumber);  
+                        out.newLine();
+                        out.write(doctorfirstname);  
+                        out.newLine();
+                        out.write(doctorlastname);  
+                        out.newLine();
+                        out.write(doctoraddressline);  
+                        out.newLine();
+                        out.write(notes);  
+                        out.newLine();
+                        out.write(meds);  
+                        out.newLine();
+                        out.write(quantity);  
+                        out.newLine();
+                        out.write(dosage);    
+                        out.newLine();
+                        out.close();
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+            
+                
+             
+            }
+            b = b + 1;
+        }
+        
+        ArrayList<userRequests.userPrescription> currentPatients13 = new ArrayList<userRequests.userPrescription>();
+        dataReadIn data3 = new dataReadIn();
+        try{
+        data3.readDoctorRequestedPresciptions(currentPatients13);
+        }
+        catch(Exception e){
+                e.printStackTrace();
+            }
+        Object[] currentPatients3 = currentPatients13.toArray();
+        int length3 = currentPatients3.length;
+        String[] username1 = new String[length3];
+            for (int i = 0; i < length3; i++) {
+                String name = ((userRequests.userPrescription)currentPatients3[i]).getPatientNumber();
+                username1[i] = name;
+                
+            }
+        int a = 0;
+        boolean userisTrue;
+        
+        
+        while( a < length3){
+            if(username1[a].equals(patientNumber.getText())){
+                userisTrue = true;
+            }
+            else{
+                userisTrue = false;
+            }
+            
+            if(Boolean.TRUE.equals(userisTrue)){
+                data.removePrescription(currentPatients13.get(a), currentPatients13);
+                try{
+                   BufferedWriter clear = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPrescription.txt", false));
+                    clear.newLine();
+                }
+                catch(Exception e){
+                e.printStackTrace();
+                }
+                if(length != 1){
+                    length = length - 1;
+                }
+                    
+                    for (int l = 0; l < length; l++) {
+                        currentPatients3 = currentPatients13.toArray();
+                        String username = ((userRequests.userPrescription)currentPatients3[l]).getUserID();
+                         String password  = ((userRequests.userPrescription)currentPatients3[l]).getPassword();
+                         String firstname = ((userRequests.userPrescription)currentPatients3[l]).getFirstname();
+                         String lastname = ((userRequests.userPrescription)currentPatients3[l]).getLastname();
+                         String address = ((userRequests.userPrescription)currentPatients3[l]).getAddressLine();
+                         String gender  = ((userRequests.userPrescription)currentPatients3[l]).getGender();
+                         String age  = ((userRequests.userPrescription)currentPatients3[l]).getAge();
+                         String patientnumber = ((userRequests.userPrescription)currentPatients3[l]).getPatientNumber();
+                         String doctorfirstname = ((userRequests.userPrescription)currentPatients3[l]).getDoctorfirstname();
+                         String doctorlastname = ((userRequests.userPrescription)currentPatients3[l]).getDoctorlastname();
+                         String doctoraddress = ((userRequests.userPrescription)currentPatients3[l]).getDoctoraddressline();
+                         String comments = ((userRequests.userPrescription)currentPatients3[l]).getNotes();
+                         String medication = ((userRequests.userPrescription)currentPatients3[l]).getMeds();
+                         String quantity = ((userRequests.userPrescription)currentPatients3[l]).getQuantity();
+                         String dosage = ((userRequests.userPrescription)currentPatients3[l]).getDosage();
+                         
+                        try{
+                            BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPrescription.txt", true));
+                            out.newLine();
+                            out.write(username);  
+                            out.newLine();
+                            out.write(password);
+                            out.newLine();
+                            out.write(firstname);  
+                            out.newLine();
+                            out.write(lastname);  
+                            out.newLine();
+                            out.write(address);  
+                            out.newLine();
+                            out.write(gender);  
+                            out.newLine();
+                            out.write(age);  
+                            out.newLine();
+                            out.write(patientnumber);  
+                            out.newLine();
+                            out.write(doctorfirstname);  
+                            out.newLine();
+                            out.write(doctorlastname);  
+                            out.newLine();
+                            out.write(doctoraddress);  
+                            out.newLine();
+                            out.write(comments);  
+                            out.newLine();
+                            out.write(medication);  
+                            out.newLine();
+                            out.write(quantity);  
+                            out.newLine();
+                            out.write(dosage);  
+                            out.newLine();
+                            out.close();
+                            
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
+                }
+            }
+            a = a + 1;
+            
+        
+        
+        
+     
+        
+        
+       
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,13 +597,21 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField doctorName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField medicationNeededIn;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField medicationIn;
+    private javax.swing.JTextField patientNumber;
     private javax.swing.JTextField quatityNeededin;
     private javax.swing.JTextField stockIn;
     // End of variables declaration//GEN-END:variables

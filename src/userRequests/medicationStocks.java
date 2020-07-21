@@ -14,7 +14,7 @@ public class medicationStocks {
     public String quanity;
     
 
-    public medicationStocks(String medicationinname ,String quanity) {
+    public medicationStocks(String medicationname ,String quanity) {
         this.medicationname = medicationname;
         this.quanity = quanity;
         

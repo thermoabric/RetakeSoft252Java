@@ -23,7 +23,7 @@ functionality as follows:
 21. Prescribe medicines and dosages Doctor 21/07/2020 WORKING
 22. Create new medicines and request secretaries to order these. Doctor 20/07/2020 WORKING
 23. Order and stock medicines if necessary. Secretary 21/07/2020
-24. Give medicines to patients if available. Secretary 21/07/2020
+24. Give medicines to patients if available. Secretary 21/07/2020 WORKING
 25. View his or her own history. Patient
 26. Inspect patient history. Doctor
 

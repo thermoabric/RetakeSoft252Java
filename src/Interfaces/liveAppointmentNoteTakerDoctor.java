@@ -204,6 +204,9 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         int b2 = 0;
         boolean userCheck2 = false;
         
+        boolean writecheck = false;
+        boolean writecheck2 = false;
+        
         String doctorname = actingDoctorIn.getText();
         String patientnumber = patientNumberIn.getText();
         
@@ -240,7 +243,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 firstname = ((UserObj.doctorObj)adoctors[b]).getFirstname();
                 lastname = ((UserObj.doctorObj)adoctors[b]).getLastname();
                 addressdoctor = ((UserObj.doctorObj)adoctors[b]).getAddressline();
-
+                writecheck = true;
                 
 
             }
@@ -279,7 +282,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 address2 = ((UserObj.patientObj)apatient[b2]).getAddressLine();
                 gender2  = ((UserObj.patientObj)apatient[b2]).getGender();
                 age2  = ((UserObj.patientObj)apatient[b2]).getAge();
-                
+                writecheck2 = true;
                 
 
                 
@@ -287,14 +290,14 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
             }
             b2 = b2 + 1;
         }
-        if( Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(userCheck2) ){
+        if( Boolean.TRUE.equals(writecheck) && Boolean.TRUE.equals(writecheck2) ){
             try{
                 BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPresciption.txt", true));
-                out.newLine();
                 out.newLine();
                 out.write(username2);  
                 out.newLine();
                 out.write(password2);
+                out.newLine();
                 out.write(firstname2);  
                 out.newLine();
                 out.write(lastname2);  
@@ -304,8 +307,6 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 out.write(address2);  
                 out.newLine();
                 out.write(gender2);  
-                out.newLine();
-                out.write(patientnumber);  
                 out.newLine();
                 out.write(patientnumber);  
                 out.newLine();

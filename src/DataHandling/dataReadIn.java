@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import userRequests.userPrescription;
 import userRequests.userAppointments;
+import userRequests.medicationStocks;
 
 
 
@@ -342,47 +343,39 @@ public void readRequestedAppointments(ArrayList<userAppointments> appointments) 
 
 
 
-}}
+}
    
    
-   
-   
-   
-   
-   
-   
- 
+   public void readCurrentMeds(ArrayList<medicationStocks> meds) throws Exception {
   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-  
+    File file = new File("./checks\\medicines.txt");
     
-     
-   
+    BufferedReader br = new BufferedReader(new FileReader(file)); 
+        
+        String med, quatity;  
+        
+        while ((br.readLine()) != null) {
+             med = br.readLine();
+             quatity = br.readLine();
+            
+             
+            
+            userRequests.medicationStocks a = new medicationStocks(med,quatity);
+            addMedication(a, meds);
+        }
+   }
+public void addMedication(userRequests.medicationStocks a, ArrayList medicationStocks)
+        {
+            
+            medicationStocks.add(a);
+           
+        }
+
+ public void removeMedication(userRequests.medicationStocks a, ArrayList medicationStocks)
+    {
        
+        medicationStocks.remove(a);
+    }
+  }
+   
   
-
-
-
-
-
-
-

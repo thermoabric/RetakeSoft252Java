@@ -11,7 +11,7 @@ serina
 james 
 Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
 Mr. John Doe has been suffering from fever for the last two weeks. He is coughing and the phlegm is green in colour. Suspected bacterial infection – we have collected his phlegm for testing. We are immediately starting him on an antibiotic course.
-Amoxicillin
+amoxicillin
 24
 4 per day – at least 6 hours between each dose.
 
@@ -27,6 +27,6 @@ serina
 james 
 Fictitious Clinic, Diagon Alley, Drake Circus, Plymouth, PL4 8AA
 Mr. John Doe has been suffering from fever for the last two weeks. He is coughing and the phlegm is green in colour. Suspected bacterial infection – we have collected his phlegm for testing. We are immediately starting him on an antibiotic course.
-Amoxicillin
+amoxicillin
 24
 4 per day – at least 6 hours between each dose.

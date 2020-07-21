@@ -540,7 +540,7 @@ public class checkStockandApprovePresciption extends javax.swing.JFrame {
        
         }
         
-        
+         Clinic.infoBox("stock level checked and prescription sent to patient   ", "notification   ");
         
         
         

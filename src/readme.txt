@@ -20,10 +20,10 @@ functionality as follows:
 18. View the ratings of the doctors. Administrator 20/07/2020 WORKING
 19. Provide feedback to each doctor based on ratings and comments from patients. Administrator 20/07/2020 WORKING
 20. Make notes during a consultation. Doctor 21/07/2020
-21. Create new medicines and request secretaries to order these. Doctor 20/07/2020 WORKING
-22. Order and stock medicines if necessary. Secretary 21/07/2020
-23. Give medicines to patients if available. Secretary
-24. Prescribe medicines and dosages Doctor 21/07/2020
+21. Prescribe medicines and dosages Doctor 21/07/2020
+22. Create new medicines and request secretaries to order these. Doctor 20/07/2020 WORKING
+23. Order and stock medicines if necessary. Secretary 21/07/2020
+24. Give medicines to patients if available. Secretary
 25. View his or her own history. Patient
 26. Inspect patient history. Doctor
 

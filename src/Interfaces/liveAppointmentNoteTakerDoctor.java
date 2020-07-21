@@ -5,6 +5,17 @@
  */
 package Interfaces;
 
+import DataHandling.dataReadIn;
+import Main.Clinic;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import UserObj.doctorObj;
+import UserObj.user;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 /**
  *
  * @author Block
@@ -28,7 +39,6 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         patientNumberIn = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -42,6 +52,8 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         quaitityIn = new javax.swing.JTextField();
         dosageIn = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        actingDoctorIn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,8 +63,6 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton2.setText("save notes");
 
         jLabel1.setText("patient Number ");
 
@@ -70,7 +80,14 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
 
         jLabel6.setText("dosage");
 
-        jButton3.setText("prescribe ");
+        jButton3.setText("save notes and prescribe medication ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("acting doctor name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,38 +97,39 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(patientNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(actingDoctorIn, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(patientNumberIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jButton1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(29, 29, 29)
-                                    .addComponent(jLabel5))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameMedIn, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(quaitityIn)
-                            .addComponent(dosageIn))
+                        .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(29, 29, 29)
+                                            .addComponent(jLabel5))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameMedIn)
+                                    .addComponent(quaitityIn)
+                                    .addComponent(dosageIn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +143,13 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(actingDoctorIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -142,10 +162,11 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(dosageIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dosageIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -157,6 +178,171 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
         open.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String username2 = "0";
+        String password2= "0";
+        String firstname2= "0";
+        String lastname2= "0";
+        String address2= "0";
+        String gender2= "0";
+        String age2= "0";
+        String medprescribed = nameMedIn.getText(); 
+        String quatity = quaitityIn.getText();
+        String dosage = dosageIn.getText();
+        
+        
+        
+         String firstname = "0";
+         String lastname= "0" ;
+         String addressdoctor = "0";
+        
+         
+        int b = 0;
+        boolean userCheck = false;
+        
+        int b2 = 0;
+        boolean userCheck2 = false;
+        
+        String doctorname = actingDoctorIn.getText();
+        String patientnumber = patientNumberIn.getText();
+        
+        ArrayList<user> doctors = new ArrayList<user>();
+        
+        dataReadIn data = new dataReadIn();
+        try{
+            data.readCurrentDoctors(doctors);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        Object[] adoctors = doctors.toArray();
+
+        int length = adoctors.length;
+        String[] userName = new String[length];
+        for (int i = 0; i < length; i++) {
+             doctorname = ((UserObj.doctorObj)adoctors[i]).getFirstname();
+            userName[i] = doctorname;
+        }
+
+        
+        while( b < length){
+            if(userName[b].equals(actingDoctorIn.getText())){
+                userCheck = true;
+            }
+            else{
+                userCheck = false;
+            }
+
+            if( (Boolean.TRUE.equals(userCheck) )){
+
+                
+                firstname = ((UserObj.doctorObj)adoctors[b]).getFirstname();
+                lastname = ((UserObj.doctorObj)adoctors[b]).getLastname();
+                addressdoctor = ((UserObj.doctorObj)adoctors[b]).getAddressline();
+
+                
+
+            }
+            b = b + 1;
+        }
+        ArrayList<user> patient = new ArrayList<user>();
+        dataReadIn data2 = new dataReadIn();
+        try{
+            data2.readCurrentPatients(patient);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        Object[] apatient = patient.toArray();
+
+        int length2 = apatient.length;
+        String[] userName2 = new String[length2];
+        for (int i = 0; i < length2; i++) {
+            patientnumber = ((UserObj.patientObj)apatient[i]).getPatientNumber();
+            userName2[i] = patientnumber;
+        }
+        while( b2 < length2){
+            if(userName2[b2].equals(patientNumberIn.getText())){
+                userCheck2 = true;
+            }
+            else{
+                userCheck2 = false;
+            }
+
+            if( (Boolean.TRUE.equals(userCheck2) )){
+
+                username2 = ((UserObj.patientObj)apatient[b2]).getUserID();
+                password2  = ((UserObj.patientObj)apatient[b2]).getPassword();
+                firstname2 = ((UserObj.patientObj)apatient[b2]).getFirstname();
+                lastname2 = ((UserObj.patientObj)apatient[b2]).getLastname();
+                address2 = ((UserObj.patientObj)apatient[b2]).getAddressLine();
+                gender2  = ((UserObj.patientObj)apatient[b2]).getGender();
+                age2  = ((UserObj.patientObj)apatient[b2]).getAge();
+                
+                
+
+                
+
+            }
+            b2 = b2 + 1;
+        }
+        if( Boolean.TRUE.equals(userCheck) && Boolean.TRUE.equals(userCheck2) ){
+            try{
+                BufferedWriter out = new BufferedWriter(new FileWriter("./checks\\doctorAssignedPresciption.txt", true));
+                out.newLine();
+                out.newLine();
+                out.write(username2);  
+                out.newLine();
+                out.write(password2);
+                out.write(firstname2);  
+                out.newLine();
+                out.write(lastname2);  
+                out.newLine();
+                out.write(username2);  
+                out.newLine();
+                out.write(address2);  
+                out.newLine();
+                out.write(gender2);  
+                out.newLine();
+                out.write(patientnumber);  
+                out.newLine();
+                out.write(patientnumber);  
+                out.newLine();
+                out.write(firstname);  
+                out.newLine();
+                out.write(lastname);  
+                out.newLine();
+                out.write(patientnumber);  
+                out.newLine();
+                out.write(addressdoctor);  
+                out.newLine();
+                out.write(medprescribed);  
+                out.newLine();
+                out.write(quatity);  
+                out.newLine();
+                out.write(dosage);  
+                out.newLine();
+                out.close();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            Clinic.infoBox("prescription and notes saved  ", "appointment availible  ");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,9 +380,9 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField actingDoctorIn;
     private javax.swing.JTextField dosageIn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -204,6 +390,7 @@ public class liveAppointmentNoteTakerDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nameMedIn;

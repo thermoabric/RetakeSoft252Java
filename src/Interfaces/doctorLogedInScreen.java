@@ -59,7 +59,7 @@ public class doctorLogedInScreen extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("appointment note taker ");
+        jButton4.setText("appointment note taker and medication prescribe");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -95,7 +95,7 @@ public class doctorLogedInScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton5)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

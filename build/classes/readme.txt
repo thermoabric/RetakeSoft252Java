@@ -24,8 +24,8 @@ functionality as follows:
 22. Create new medicines and request secretaries to order these. Doctor 20/07/2020 WORKING
 23. Order and stock medicines if necessary. Secretary 21/07/2020 WORKING 
 24. Give medicines to patients if available. Secretary 21/07/2020 WORKING
-25. View his or her own history. Patient
-26. Inspect patient history. Doctor
+25. View his or her own history. Patient not sure the meaning of this function 
+26. Inspect patient history. Doctor not sure the meaning of this function 
 
 EXTRA WORK TO DO IF TIME 
 patient ability to accept proposed appointments 
